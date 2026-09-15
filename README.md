@@ -172,10 +172,6 @@ python3 compare_in_coppeliasim.py
 python3 set_demo_pose.py
 ```
 
-`set_demo_pose.py` comanda i giunti come motorizzati (`setJointTargetPosition`),
-fa girare la simulazione per un paio di secondi e poi la mette in **pausa**
-(mai in *stop*, che riporterebbe il robot alla posa iniziale).
-
 **Validazione quantitativa in simulazione** (suggerita in sede di revisione
 del progetto: non affidarsi al solo confronto visivo, ma comandare lo stesso
 valore ai giunti corrispondenti dei due robot e misurare — leggendola

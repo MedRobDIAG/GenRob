@@ -5,30 +5,13 @@ naturale della posa a riposo (che con questa architettura, a_i=0 per tutti
 i link, e' un braccio completamente disteso -- vedi il disegno Fig. 4-1 del
 manuale KUKA, che raffigura lo stesso robot esteso in verticale).
 
-Usa gli stessi angoli del render Three.js del notebook/dimostratore
-(q = [40,-60,-20,70,30,-30,15] gradi), applicati a entrambi i robot cosi' il
-confronto resta equo.
-
-I giunti vengono comandati come motorizzati (setJointTargetPosition) e la
-simulazione viene fatta girare per un paio di secondi e poi messa in pausa
-(mai fermata: lo stop riporterebbe il robot alla posa iniziale) -- questo
-garantisce che il rendering nel viewport rifletta correttamente la posa
-comandata.
-
-Prerequisiti: compare_in_coppeliasim.py gia' eseguito in questa sessione di
-CoppeliaSim (i robot extracted_robot/reference_robot devono gia' esistere
-nella scena).
-
 Uso:
     python3 set_demo_pose.py
 """
-import time
-
 import numpy as np
 from coppeliasim_zmqremoteapi_client import RemoteAPIClient
 
 DEMO_POSE_DEG = [55, -55, 35, 75, -20, 40, -10]
-SETTLE_SECONDS = 2.5  # tempo di simulazione per lasciar convergere il controllo di posizione
 
 
 def root_ancestor(sim, handle):
@@ -64,13 +47,10 @@ def main():
     for root, joints in all_joints.items():
         for idx, deg in enumerate(DEMO_POSE_DEG, start=1):
             if idx in joints:
-                sim.setJointTargetPosition(joints[idx], np.radians(deg))
-        print(f"  robot (root={root}): target impostato su {len(joints)} giunti")
-
-    print(f"\nFaccio girare la simulazione per {SETTLE_SECONDS}s per raggiungere la posa...")
-    sim.startSimulation()
-    time.sleep(SETTLE_SECONDS)
-    sim.pauseSimulation()
+                h = joints[idx]
+                sim.setJointMode(h, sim.jointmode_kinematic, 0)
+                sim.setJointPosition(h, np.radians(deg))
+        print(f"  robot (root={root}): posa applicata a {len(joints)} giunti")
 
     print("\nFatto. Guarda la finestra di CoppeliaSim: entrambi i bracci ora sono nella stessa posa piegata.")
 
