@@ -1,0 +1,50 @@
+{
+  "robot_name": "LBR iiwa 7 R800",
+  "num_joints": 7,
+  "payload_kg": 7,
+  "reach_mm": 800,
+  "mass_kg": 23.9,
+  "repeatability_mm": 0.1,
+  "joints": [
+    {
+      "index": 1,
+      "range_deg": 170,
+      "velocity_deg_s": 98
+    },
+    {
+      "index": 2,
+      "range_deg": 120,
+      "velocity_deg_s": 98
+    },
+    {
+      "index": 3,
+      "range_deg": 170,
+      "velocity_deg_s": 100
+    },
+    {
+      "index": 4,
+      "range_deg": 120,
+      "velocity_deg_s": 130
+    },
+    {
+      "index": 5,
+      "range_deg": 170,
+      "velocity_deg_s": 140
+    },
+    {
+      "index": 6,
+      "range_deg": 120,
+      "velocity_deg_s": 180
+    },
+    {
+      "index": 7,
+      "range_deg": 175,
+      "velocity_deg_s": 180
+    }
+  ],
+  "link_dimensions_mm": [
+    400,
+    400
+  ],
+  "extra_constraints": []
+}

@@ -1,0 +1,13 @@
+{
+  "domain": "chirurgico",
+  "title": "Giunti e volume operativo",
+  "rationale": "Utilizzo del robot KUKA con highlight 'joint_limits' per visualizzare il volume operativo come un insieme di punti raggiungibili, non un solido perfetto.",
+  "environment": "sala_operatoria",
+  "camera": "frontale",
+  "elements": [
+    { "type": "robot_kuka", "highlight": "joint_limits" },
+    { "type": "target_marker", "label": "punto di interesse", "reachable_hint": "reachable" },
+    { "type": "tissue_block", "label": "tessuto simulato" }
+  ],
+  "annotations": ["highlight joint_limits", "reachable_hint reachable"]
+}

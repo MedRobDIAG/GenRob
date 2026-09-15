@@ -1,0 +1,19 @@
+# --- Sempre necessario (nessuna GPU richiesta) ---
+numpy
+
+# --- module_a/extract_from_manual.py e module_b/generate_scene.py ---
+# Girano su GPU NVIDIA (CUDA), su Mac Apple Silicon (backend MPS di PyTorch)
+# o su CPU (lento). Installare solo se si esegue davvero l'estrazione/
+# generazione VLM (altrimenti la repo resta interamente riproducibile con i
+# soli dati cache in module_a/data/ e module_b/data/).
+torch
+torchvision
+transformers>=4.57.0
+accelerate
+qwen-vl-utils
+pymupdf       # rendering PDF->immagini, nessuna dipendenza di sistema (a differenza di pdf2image/poppler)
+# bitsandbytes  # solo su GPU NVIDIA/CUDA per la quantizzazione 4-bit; non installabile su Apple Silicon
+# diffusers     # solo per il test SD-Turbo opzionale (sfondo generato per il Modulo B)
+
+# --- coppelia/compare_in_coppeliasim.py ---
+# coppeliasim-zmqremoteapi-client
