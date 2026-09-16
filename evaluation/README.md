@@ -6,6 +6,7 @@ cinematici da documentazione tecnica: la parte di ricerca che sta a monte di
 **quanto bene** l'estrazione funziona, con numeri riproducibili invece che con
 un confronto visivo.
 
+
 Vale qui lo stesso principio della repository: un solo script invoca un modello
 generativo (`esegui_locale.py`); punteggio, predicati di validazione e
 aggregazione sono codice deterministico, eseguibile ovunque senza GPU.
