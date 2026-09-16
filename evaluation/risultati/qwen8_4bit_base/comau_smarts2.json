@@ -1,0 +1,97 @@
+{
+ "robot_id": "comau_smarts2",
+ "identificazione": {
+  "modello": "SMART S2",
+  "costruttore": "Robot"
+ },
+ "assi_controllati": 6,
+ "limiti": {
+  "asse 1": {
+   "min": -152.5,
+   "max": 152.5,
+   "ampiezza": null,
+   "unita": "°"
+  },
+  "asse 2": {
+   "min": -105,
+   "max": 105,
+   "ampiezza": null,
+   "unita": "°"
+  },
+  "asse 3": {
+   "min": -125,
+   "max": 125,
+   "ampiezza": null,
+   "unita": "°"
+  },
+  "asse 4": {
+   "min": -210,
+   "max": 210,
+   "ampiezza": null,
+   "unita": "°"
+  },
+  "asse 5": {
+   "min": -125,
+   "max": 125,
+   "ampiezza": null,
+   "unita": "°"
+  },
+  "asse 6": {
+   "min": -2700,
+   "max": 2700,
+   "ampiezza": null,
+   "unita": "°"
+  }
+ },
+ "geometria": {
+  "d1": {
+   "valore": 900,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "900",
+    "posizione": "vista laterale, in alto a destra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a1": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non quotato nel disegno"
+  },
+  "a2": {
+   "valore": 105,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "105",
+    "posizione": "vista laterale, al centro"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a3": {
+   "valore": 105,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "105",
+    "posizione": "vista laterale, al centro"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "d6": {
+   "valore": 215,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "215",
+    "posizione": "vista laterale, in alto a destra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  }
+ },
+ "reach_dichiarato": 1458,
+ "note": null
+}

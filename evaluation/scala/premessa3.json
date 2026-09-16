@@ -1,0 +1,52 @@
+[
+ {
+  "pagina": 10,
+  "robot": "GP7",
+  "n_valori": 49,
+  "n_segmenti": 480,
+  "reale": 33,
+  "nullo_mediana": 37.0,
+  "nullo_max": 41,
+  "scala": 11.63852432342025
+ },
+ {
+  "pagina": 12,
+  "robot": "GP8",
+  "n_valori": 55,
+  "n_segmenti": 535,
+  "reale": 36,
+  "nullo_mediana": 43.0,
+  "nullo_max": 47,
+  "scala": 13.77622670216948
+ },
+ {
+  "pagina": 24,
+  "robot": "GP25",
+  "n_valori": 77,
+  "n_segmenti": 513,
+  "reale": 56,
+  "nullo_mediana": 60.0,
+  "nullo_max": 65,
+  "scala": 8.44193505883749
+ },
+ {
+  "pagina": 42,
+  "robot": "GP180",
+  "n_valori": 65,
+  "n_segmenti": 565,
+  "reale": 45,
+  "nullo_mediana": 50.0,
+  "nullo_max": 55,
+  "scala": 21.508505607189196
+ },
+ {
+  "pagina": 60,
+  "robot": "GP400",
+  "n_valori": 58,
+  "n_segmenti": 678,
+  "reale": 41,
+  "nullo_mediana": 47.5,
+  "nullo_max": 50,
+  "scala": 20.686251199012645
+ }
+]

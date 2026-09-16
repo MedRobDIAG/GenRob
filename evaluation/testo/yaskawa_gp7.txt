@@ -1,0 +1,196 @@
+10   MOTOMAN GP Series
+MOTOMAN GP7
+200
+300
+400
+LB
+LT
+300
+100
+204
+145
+247
+346
+5 kg
+7 kg
+T-axis
+centre of rotation
+P-point
+80
+B-axis
+centre of 
+rotation
+Robot
+installation angle
+ [deg.]
+S-axis 
+operating range
+[deg.]
+  0 ≤  ≤ 30
+±170 max.
+no limit
+30 <  ≤ 35
+±60 max.
+35 <  ≤ 45
+±45 max.
+45 < 
+±30 max.
+2 x Air inlet Rc 1/4
+with pipe plug 
+Internal user wiring connector
+Matching connector
+Fitting depth
+Ø 12 H7
+4 x M5, depth 8
+Ø 5 H7, depth 6
+45°
+Ø 31.5
+115 115
+115 115
+440
+1732
+40
+65°
+145°
+1217
+0
+80
+255°
+927
+476
+29°
+116°
+499
+805
+439
+78
+79
+233
+165
+83
+0
+856
+520
+250
+190
+20
+96
+25
+877
+445
+40
+62
+1217
+2 x 4 x M4,
+depth 7
+Working range 
+Point P
+B
+C
+A
+B
+S
+T
+R
+L
+U
+170°
+170°
+54
+54
+R927
+R233
+52
+80
+4 x M8, depth 15
+124
+160
+194
+100±0.1
+160
+66±0.1
+60±0.1
+85±0.1
+198
+100±0.1
+4 x Ø 12
+Ø 12 H7
+Allowable wrist load                                
+View A
+
+View C
+View B
+Mounting options: Floor, ceiling, wall, tilt*
+IP Protection: IP67
+Option: Cleanroom class 5
+* tilt with condition of angle – see table below
+Prevent interaction 
+of the robot with:
+• Corrosive gases, 
+liquids or 
+explosive gases
+• Exposure to water, 
+oil or dust
+• Excessive electrical 
+noise (plasma)
+Specifications GP7
+Axes
+Maximum 
+motion range
+[º]
+Maximum 
+speed
+[º/s]
+Allowable 
+moment
+[Nm]
+Allowable 
+moment of inertia 
+[kg · m2]
+Controlled axes
+6
+Max. payload [kg]
+7
+S
+±170
+375
+–
+–
+Repeatability [mm]
+±0.01★
+L
++145/–65
+315
+–
+–
+Max. working range R [mm]
+927
+U
++190/–70
+410
+–
+–
+Temperature [ºC]
+0 to +45
+R
+±190
+550
+17
+0.5
+Humidity [%]
+20 – 80
+B
+±135
+550
+17
+0.5
+Weight [kg]
+37
+T
+±360
+1000
+10
+0.2
+Power supply, average [kVA]
+1★★
+★ Conforms to ISO 9283     ★★ Varies in accordance with applications and motion patterns     Note: SI units are used for specifi cations.

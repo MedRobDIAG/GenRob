@@ -1,0 +1,97 @@
+{
+ "robot_id": "kuka_kr4_R600",
+ "identificazione": {
+  "modello": "KR 4 R600",
+  "costruttore": "KUKA"
+ },
+ "assi_controllati": 6,
+ "limiti": {
+  "A1": {
+   "min": -170,
+   "max": 170,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "A2": {
+   "min": -195,
+   "max": 40,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "A3": {
+   "min": -115,
+   "max": 150,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "A4": {
+   "min": -185,
+   "max": 185,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "A5": {
+   "min": -120,
+   "max": 120,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "A6": {
+   "min": -350,
+   "max": 350,
+   "ampiezza": null,
+   "unita": "deg"
+  }
+ },
+ "geometria": {
+  "d1": {
+   "valore": 330,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "330",
+    "posizione": "vista laterale, in basso a sinistra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a1": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non quotato nel disegno"
+  },
+  "a2": {
+   "valore": 601,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "601",
+    "posizione": "vista laterale, in alto a destra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a3": {
+   "valore": 601,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "601",
+    "posizione": "vista laterale, in basso a destra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "d6": {
+   "valore": 601,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "601",
+    "posizione": "vista laterale, in alto a sinistra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  }
+ },
+ "reach_dichiarato": 601,
+ "note": null
+}

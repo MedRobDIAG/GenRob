@@ -1,0 +1,70 @@
+{
+ "modello": "Qwen/Qwen3-VL-8B-Instruct",
+ "backend": "transformers",
+ "quant": "4",
+ "max_pixels": 1229312,
+ "variante": "base",
+ "temperatura": 0.7,
+ "casi": [
+  {
+   "robot": "yaskawa_gp8",
+   "ripetizione": 1,
+   "secondi": 72.32,
+   "vram_picco_gb": 8.15,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "yaskawa_gp8",
+   "ripetizione": 2,
+   "secondi": 72.08,
+   "vram_picco_gb": 8.15,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "yaskawa_gp8",
+   "ripetizione": 3,
+   "secondi": 71.66,
+   "vram_picco_gb": 8.15,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "kuka_kr4_R600",
+   "ripetizione": 1,
+   "secondi": 65.69,
+   "vram_picco_gb": 8.16,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "kuka_kr4_R600",
+   "ripetizione": 2,
+   "secondi": 74.04,
+   "vram_picco_gb": 8.16,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "kuka_kr4_R600",
+   "ripetizione": 3,
+   "secondi": 65.95,
+   "vram_picco_gb": 8.16,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  }
+ ]
+}

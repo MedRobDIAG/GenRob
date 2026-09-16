@@ -1,0 +1,216 @@
+2 x Air inlet Rc 1/4
+with pipe plug 
+Internal user wiring connector
+Matching connector
+Fitting depth
+Ø 12 H7
+4 x M5, depth 8
+Ø 5 H7, depth 6
+45°
+Ø 31.5
+124
+160
+194
+100±0.1
+160
+66±0.1
+60±0.1
+85±0.1
+198
+100±0.1
+4 x Ø 12
+Ø 12 H7
+2 x M8, depth 16
+170°
+R199
+R727
+55
+16
+80
+170°
+55
+55
+115
+115
+340
+1342
+40
+818
+620
+80
+65°
+145° 
+31°
+330
+615
+370
+322
+45
+0
+70
+199
+727
+345
+62
+40
+777
+255°
+113°
+96
+25
+110
+190
+20
+1017
+731
+486
+207
+137
+0
+295
+1017
+85°
+105°
+4 x M8,
+depth 8
+Working range 
+Point P
+B
+C
+A
+B
+S
+T
+R
+L
+U
+Specifications GP8
+Axes
+Maximum 
+motion range
+[º]
+Maximum 
+speed
+[º/s]
+Allowable 
+moment
+[Nm]
+Allowable 
+moment of inertia 
+[kg · m2]
+Controlled axes
+6
+Max. payload [kg]
+8
+S
+±170
+455
+–
+–
+Repeatability [mm]
+±0.01★
+L
++145/–65
+385
+–
+–
+Max. working range R [mm]
+727
+U
++190/–70
+520
+–
+–
+Temperature [ºC]
+0 to +45
+R
+±190
+550
+17
+0.5
+Humidity [%]
+20 – 80
+B
+±135
+550
+17
+0.5
+Weight [kg]
+35
+T
+±360
+1000
+10
+0.2
+Power supply, average [kVA]
+1★★
+★ Conforms to ISO 9283     ★★ Varies in accordance with applications and motion patterns     Note: SI units are used for specifi cations.
+View C
+Allowable wrist load                             
+View A
+View B
+200
+300
+400
+LB
+LT
+300
+100
+204
+145
+127
+247
+216
+346
+5 kg
+8 kg
+80
+7 kg
+T-Achse
+Drehmittelpunkt
+P-Punkt
+B-Achse
+Drehmittel-
+punkt
+Robot
+installation angle
+ [deg.]
+S-axis 
+operating range
+[deg.]
+  0 ≤ U ≤ 30
+±170 max. 
+no limit
+30 < U ≤ 35
+±60 max.
+35 < U ≤ 45
+±45 max.
+45 < U
+±30 max.
+Mounting options: Floor, ceiling, wall, tilt*
+IP Protection: IP67
+Option: Cleanroom class 5
+*	tilt with condition of angle – see table below
+Prevent interaction  
+of the robot with:
+•	Corrosive gases,  
+liquids or  
+explosive gases
+•	Exposure to water,  
+oil or dust
+•	Excessive electrical 
+noise (plasma)
+
+Robotics Division
+Yaskawastraße 1
+85391 Allershausen
+Germany
+Yaskawa Europe GmbH
+Tel. +49 (0) 8166 90-0
+robotics@yaskawa.eu
+www.yaskawa.eu
+All drawing dimensions in mm. Technical data may be subject to change without previous notice.
+Please request detailed drawings at robotics@yaskawa.eu.
+MOTOMAN GP8
+YR-1-06VX8-A00
+F-03-2024, A-No. 206022

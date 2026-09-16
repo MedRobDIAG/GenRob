@@ -1,0 +1,80 @@
+{
+ "modello": "Qwen/Qwen3-VL-8B-Instruct",
+ "backend": "transformers",
+ "quant": "4",
+ "max_pixels": 1229312,
+ "variante": "solo_testo",
+ "temperatura": 0.0,
+ "casi": [
+  {
+   "robot": "yaskawa_gp8",
+   "ripetizione": 1,
+   "secondi": 59.28,
+   "vram_picco_gb": 7.87,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "yaskawa_gp7",
+   "ripetizione": 1,
+   "secondi": 55.96,
+   "vram_picco_gb": 7.64,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "kuka_iisy8_R930",
+   "ripetizione": 1,
+   "secondi": 63.89,
+   "vram_picco_gb": 8.33,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "kuka_kr4_R600",
+   "ripetizione": 1,
+   "secondi": 64.58,
+   "vram_picco_gb": 8.34,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "abb_irb6400pe",
+   "ripetizione": 1,
+   "secondi": 74.26,
+   "vram_picco_gb": 7.09,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "fanuc_r2000i",
+   "ripetizione": 1,
+   "secondi": 81.41,
+   "vram_picco_gb": 8.58,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "comau_smarts2",
+   "ripetizione": 1,
+   "secondi": 29.37,
+   "vram_picco_gb": 6.66,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  }
+ ]
+}

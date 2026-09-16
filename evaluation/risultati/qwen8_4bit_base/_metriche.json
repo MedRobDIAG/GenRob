@@ -1,0 +1,160 @@
+{
+ "modello": "Qwen/Qwen3-VL-8B-Instruct",
+ "backend": "transformers",
+ "quant": "4",
+ "max_pixels": 1229312,
+ "variante": "base",
+ "temperatura": 0.7,
+ "casi": [
+  {
+   "robot": "yaskawa_gp8",
+   "ripetizione": 1,
+   "secondi": 70.92,
+   "vram_picco_gb": 8.15,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "yaskawa_gp8",
+   "ripetizione": 2,
+   "secondi": 72.05,
+   "vram_picco_gb": 8.15,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "yaskawa_gp8",
+   "ripetizione": 3,
+   "secondi": 71.3,
+   "vram_picco_gb": 8.15,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "yaskawa_gp7",
+   "ripetizione": 1,
+   "secondi": 74.8,
+   "vram_picco_gb": 8.15,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "yaskawa_gp7",
+   "ripetizione": 2,
+   "secondi": 78.05,
+   "vram_picco_gb": 8.15,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "yaskawa_gp7",
+   "ripetizione": 3,
+   "secondi": 74.73,
+   "vram_picco_gb": 8.15,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "kuka_iisy8_R930",
+   "ripetizione": 1,
+   "secondi": 75.16,
+   "vram_picco_gb": 8.16,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "kuka_iisy8_R930",
+   "ripetizione": 2,
+   "secondi": 73.93,
+   "vram_picco_gb": 8.16,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "kuka_iisy8_R930",
+   "ripetizione": 3,
+   "secondi": 66.94,
+   "vram_picco_gb": 8.16,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "kuka_kr4_R600",
+   "ripetizione": 1,
+   "secondi": 65.67,
+   "vram_picco_gb": 8.16,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "kuka_kr4_R600",
+   "ripetizione": 2,
+   "secondi": 74.44,
+   "vram_picco_gb": 8.16,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "kuka_kr4_R600",
+   "ripetizione": 3,
+   "secondi": 73.23,
+   "vram_picco_gb": 8.16,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "abb_irb6400pe",
+   "ripetizione": 1,
+   "secondi": 80.49,
+   "vram_picco_gb": 8.16,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "abb_irb6400pe",
+   "ripetizione": 2,
+   "secondi": 76.44,
+   "vram_picco_gb": 8.16,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  },
+  {
+   "robot": "abb_irb6400pe",
+   "ripetizione": 3,
+   "secondi": 81.99,
+   "vram_picco_gb": 8.16,
+   "json_valido": true,
+   "motivo": null,
+   "riparazioni": 0,
+   "schema_rispettato": true
+  }
+ ]
+}

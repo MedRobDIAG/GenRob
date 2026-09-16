@@ -1,0 +1,48 @@
+{
+ "robot_id": "comau_smarts2",
+ "identificazione": {
+  "modello": null,
+  "costruttore": null
+ },
+ "assi_controllati": 6,
+ "limiti": {},
+ "geometria": {
+  "d1": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non presente nel documento"
+  },
+  "a1": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non presente nel documento"
+  },
+  "a2": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non presente nel documento"
+  },
+  "a3": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non presente nel documento"
+  },
+  "d6": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non presente nel documento"
+  }
+ },
+ "reach_dichiarato": null,
+ "note": "Documento scansionato e privo di testo leggibile. Nessuna grandezza geometrica o limite di giunto identificabile. Nessun raggio d'azione dichiarato presente."
+}

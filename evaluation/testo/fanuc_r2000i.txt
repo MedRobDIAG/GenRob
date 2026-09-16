@@ -1,0 +1,197 @@
+STAR AUTOMATION EUROPE S.p.A.
+Via Salgari 2R/2S
+30030 Caselle di S. Maria di Sala
+Venezia - Italy
+Tel. +39.041.57.85.311
+Fax +39.041.57.85.312
+e-mail: sales@star-europe.com
+EUROPE
+STAR AUTOMATION UK LTD.
+Heathcote Way
+Heathcote Industrial Estate
+Warwick Warwickshire
+CV34 6TE - Great Britain
+Tel. +44.(0)1926.88.97.77
+Fax +44.(0)1926.88.92.10
+e-mail: sales@uk.star-europe.com
+GREAT BRITAIN
+STAR AUTOMATION GERMANY GMBH
+Business Park Fleher Brücke
+Hansemannstrasse 35
+41468 Neuss - Germany
+Tel. +49.(0)2131.71.86.80
+Fax +49.(0)2131.71.86.828
+e-mail: sales@de.star-europe.com
+GERMANY
+STAR AUTOMATION SPAIN, S.R.L.
+Calle Fructuós Gelabert, 2 y 4
+Edificio Conata 1
+08970 Sant Joan Despì (Barcelona) - Spain
+Tel. +34.(0)93.47.76.342
+Fax +34.(0)93.47.76.343
+e-mail: sales@es.star-europe.com
+SPAIN
+PIOVAN FRANCE
+Chemin du Pognat
+B.P. 67
+01460 Brion - France
+Tel. +33.(0)4.74.76.77.09
+Fax +33.(0)4.74.76.22.37
+e-mail: pf.commercial@piovan-france.fr
+FRANCE
+05.02 -  79990105 - Star Automation Europe spa si riserva il diritto di apportare modifiche senza l’obbligo di preavviso / Star Automation Europe spa can modify these specifications without notice - Centrooffset Master (mestrino-pd) - 0633-02L0853
+Voce
+R-2000i/165F
+Tipo
+Articolato
+Assi controllati
+6 assi (J1, J2, J3, J4, J5, J6)
+Installazione
+A pavimento
+Rotazione asse J1
+360° (105°/s)
+Rotazione asse J2
+135° (105°/s)
+Rotazione asse J3
+361,8° (105°/s)
+Rotazione asse J4
+720° (130°/s)
+Rotazione asse J5
+250° (130°/s)
+Rotazione asse J6
+720° (210°/s)
+Carico massimo al polso
+165 kg
+Asse J4
+94kgfm
+921Nm
+Asse J5
+94kgfm
+921Nm
+Asse J6
+47kgfm
+461Nm
+Asse J4
+800kgfcms2
+78,4kgm2
+Asse J5
+800kgfcms2
+78,4kgm2
+Asse J6
+410kgfcms2
+40,12kgm2
+Tipo di azionamento
+Motori elettrici AC
+Ripetibilità
+± 0,3 mm
+Peso
+1.210 kg
+Ambiente
+Temperatura ambiente:
+0-45° C
+installazione
+Umidità ambiente
+Normale:
+≤75%
+Breve (in un mese)
+≤95%
+Vibrazioni
+0,5 G max.
+Nota: Senza condensa né ghiaccio.
+Specifications
+Specifiche tecniche
+Area di lavoro
+(Velocità
+massima)
+Momento di
+carico max.
+al polso (Nota 1)
+Momento di
+inerzia max.
+al polso
+Item
+R-2000i/165F
+Type
+Articulated type
+Controlled axes
+6 axes (J1, J2, J3, J4, J5, J6)
+Installation
+Floor mount
+J1-Axis rotation
+360° (105°/s)
+J2-Axis rotation
+135° (105°/s)
+J3-Axis rotation
+361,8° (105°/s)
+J4-Axis wrist rotation 720° (130°/s)
+J5-Axis wrist swing
+250° (130°/s)
+J6-Axis wrist rotation 720° (210°/s)
+Max. load capacity at wrist
+165 kg
+J4-Axis
+94kgfm
+921Nm
+J5-Axis
+94kgfm
+921Nm
+J6-Axis
+47kgfm
+461Nm
+J4-Axis
+800kgfcms2
+78,4kgm2
+J5-Axis
+800kgfcms2
+78,4kgm2
+J6-Axis
+410kgfcms2
+40,12kgm2
+Drive method
+Electric servo drive by AC servo motor
+Repeatability
+± 0,3 mm
+Weight
+1.210 kg
+Installation environment
+Ambient temperature:
+0-45° C
+Ambient humidity
+Normally:
+≤75%
+Short term (within 1 month)
+≤95%
+Vibration
+0,5 G max.
+Note: No dew, nor frost allowed.
+Motion range
+(Maximum
+speed)
+Allowable
+load moment
+at wrist
+Allowable
+load inertia at
+wrist
+Side View
+Top View
+Area di lavoro
+Operating Space
++180°
+-180°
+225
+252.5
+0°
+814.5
+67
+31
+107
+128
+21
+R265
+197
+211
+69
+60
+213.3
+37

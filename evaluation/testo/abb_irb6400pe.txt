@@ -1,0 +1,98 @@
+Description
+Product Specification IRB 6400PE M2000
+13
+1.5  Robot Motion
+Type of motion
+Range of movement
+Axis 1
+Rotation motion
++180o to -180o 
+Axis 2
+Arm motion
++70o to
+-70o 
+Axis 3
+Arm motion
++105o to
+-28o 
+Axis 4
+Wrist motion
++200o to -200o 
+Axis 5
+Bend motion
++120o to -120o 
+Axis 6
+Turn motion
++300o to -300o 
+Figure 10  The extreme positions of the robot arm (dimensions in mm).
+1338
+205
+421
+718
+1000
+2246
+1669
+2075
+1963
+1549
+459
+56
+1349
+2397
+pos.
+axis 2 
+(ϕ2)
+axis 3 
+(ϕ3)
+0
+1
+2
+3
+4
+5
+6
+0
+-70
+-70
+40
+70
+70
+37
+0
+-28
+-5
+105
+105
+5
+-28
+Min. 25o Max. 155o 
+90o at pos. 0
+Positions at wrist centre (mm)
+Angle ϕ2, ϕ3 (degrees)
+Angle 2/3 (ϕ2/ϕ3)
+Z
+X
+All dimensions refer to the wrist centre (mm)
+878
+2253
+53
+2589
+900
+1
+6
+3
+4
+5
+ϕ2
+ϕ3
+ϕ2/ϕ3
+2
+0
+0
+1
+2
+3
+4
+5
+6
+pos.

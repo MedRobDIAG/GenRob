@@ -1,0 +1,85 @@
+{
+ "robot_id": "abb_irb6400pe",
+ "identificazione": {
+  "modello": "IRB 6400PE M2000",
+  "costruttore": "ABB"
+ },
+ "assi_controllati": 6,
+ "limiti": {
+  "Axis 1": {
+   "min": -180,
+   "max": 180,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "Axis 2": {
+   "min": -70,
+   "max": 70,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "Axis 3": {
+   "min": -28,
+   "max": 105,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "Axis 4": {
+   "min": -200,
+   "max": 200,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "Axis 5": {
+   "min": -120,
+   "max": 120,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "Axis 6": {
+   "min": -300,
+   "max": 300,
+   "ampiezza": null,
+   "unita": "deg"
+  }
+ },
+ "geometria": {
+  "d1": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non identificato nel disegno"
+  },
+  "a1": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non quotato nel disegno"
+  },
+  "a2": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non identificato nel disegno"
+  },
+  "a3": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non identificato nel disegno"
+  },
+  "d6": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non identificato nel disegno"
+  }
+ },
+ "reach_dichiarato": null,
+ "note": "Nessuna quota per d1, a1, a2, a3, d6 è stata trovata nel disegno. Le dimensioni nel disegno sono relative al centro del polso (wrist centre) e non corrispondono esattamente alle grandezze richieste. Le quote visibili sono: 1338, 205, 421, 718, 1000, 2246, 1669, 2075, 1963, 1549, 459, 56, 1349, 2397, 878, 2253, 53, 2589, 900, ma nessuna è etichettata come d1, a1, a2, a3 o d6. Non è possibile attribuire le quote a queste grandezze senza ambiguità."
+}

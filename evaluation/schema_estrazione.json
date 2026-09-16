@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Estrazione cinematica da scheda tecnica robot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["robot_id", "identificazione", "assi_controllati", "limiti", "geometria", "reach_dichiarato"],
+  "properties": {
+    "robot_id": { "type": "string", "description": "identificativo del caso di test, fornito nella richiesta" },
+    "identificazione": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["modello", "costruttore"],
+      "properties": {
+        "modello": { "type": ["string", "null"] },
+        "costruttore": { "type": ["string", "null"] }
+      }
+    },
+    "assi_controllati": { "type": ["integer", "null"], "minimum": 1, "maximum": 12 },
+    "limiti": {
+      "description": "chiave = nome dell'asse COME LO CHIAMA IL DOCUMENTO (A1, S, J1, 'Axis 1'...). Non rinominare.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["min", "max", "ampiezza", "unita"],
+        "properties": {
+          "min": { "type": ["number", "null"] },
+          "max": { "type": ["number", "null"] },
+          "ampiezza": {
+            "type": ["number", "null"],
+            "description": "compilare SOLO se il documento dà l'ampiezza totale invece degli estremi"
+          },
+          "unita": { "type": ["string", "null"], "enum": ["deg", "mm", null] }
+        }
+      }
+    },
+    "geometria": {
+      "description": "le cinque/sei grandezze richieste. null se non quotate o se l'attribuzione è incerta.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "d1": { "$ref": "#/$defs/grandezza" },
+        "a1": { "$ref": "#/$defs/grandezza" },
+        "a2": { "$ref": "#/$defs/grandezza" },
+        "a3": { "$ref": "#/$defs/grandezza" },
+        "d4": { "$ref": "#/$defs/grandezza" },
+        "d6": { "$ref": "#/$defs/grandezza" }
+      }
+    },
+    "reach_dichiarato": { "type": ["number", "null"], "description": "in mm, solo se esplicitamente dichiarato" },
+    "note": { "type": ["string", "null"] }
+  },
+  "$defs": {
+    "grandezza": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["valore", "unita", "source", "confidenza"],
+      "properties": {
+        "valore": { "type": ["number", "null"], "description": "null è una risposta corretta e desiderabile se il dato non c'è o è ambiguo" },
+        "unita": { "type": ["string", "null"] },
+        "source": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["testo_quota", "posizione"],
+          "properties": {
+            "testo_quota": { "type": "string", "description": "il testo esatto della quota come appare nel documento" },
+            "posizione": { "type": "string", "description": "dove si trova nella pagina, a parole" },
+            "bbox": {
+              "type": ["array", "null"],
+              "items": { "type": "number" },
+              "minItems": 4, "maxItems": 4,
+              "description": "riquadro [x0,y0,x1,y1] normalizzato 0-1000, se il modello supporta il grounding 2D"
+            }
+          }
+        },
+        "confidenza": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "nota": { "type": ["string", "null"], "description": "obbligatoria quando valore è null: perché" }
+      }
+    }
+  }
+}

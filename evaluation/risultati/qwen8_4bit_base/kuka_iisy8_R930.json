@@ -1,0 +1,88 @@
+{
+ "robot_id": "kuka_iisy8_R930",
+ "identificazione": {
+  "modello": "LBR iisy 8 R930",
+  "costruttore": "KUKA"
+ },
+ "assi_controllati": 6,
+ "limiti": {
+  "A1": {
+   "min": -185,
+   "max": 185,
+   "ampiezza": null,
+   "unita": "°"
+  },
+  "A2": {
+   "min": -230,
+   "max": 230,
+   "ampiezza": null,
+   "unita": "°"
+  },
+  "A3": {
+   "min": -150,
+   "max": 150,
+   "ampiezza": null,
+   "unita": "°"
+  },
+  "A4": {
+   "min": -180,
+   "max": 180,
+   "ampiezza": null,
+   "unita": "°"
+  },
+  "A5": {
+   "min": -110,
+   "max": 110,
+   "ampiezza": null,
+   "unita": "°"
+  },
+  "A6": {
+   "min": -220,
+   "max": 220,
+   "ampiezza": null,
+   "unita": "°"
+  }
+ },
+ "geometria": {
+  "d1": {
+   "valore": 330,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "330",
+    "posizione": "vista laterale, in basso a sinistra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a1": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non quotato nel disegno"
+  },
+  "a2": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non quotato nel disegno"
+  },
+  "a3": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non quotato nel disegno"
+  },
+  "d6": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non quotato nel disegno"
+  }
+ },
+ "reach_dichiarato": 930,
+ "note": null
+}

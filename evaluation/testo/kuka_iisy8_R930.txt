@@ -1,0 +1,395 @@
+LBR iisy 8 R930
+[
+M
+i
+s
+s
+i
+n
+g
+ 
+s
+t
+a
+t
+i
+c
+ 
+c
+o
+n
+t
+e
+n
+t
+ 
+w
+i
+t
+h
+ 
+k
+e
+y
+ 
+'
+f
+i
+g
+u
+r
+e
+'
+]
+ 
+1
+:
+ 
+L
+B
+R
+ 
+i
+i
+s
+y
+ 
+1
+5
+ 
+R
+9
+3
+0
+Dati di base
+Tipo di cinematica
+Braccio articolato
+Cobot
+Sì
+Prescrizioni di sicurezza
+Categoria 3 e Performance Level d a
+norma EN ISO 13849-1
+Dati tecnici
+Massimo raggio d’azione
+930 mm
+Carico nominale
+8 kg
+Carico massimo
+9,6 kg
+Ripetibilità di posizionamento (ISO 9283)
+± 0,05 mm
+Numero assi
+6
+Posizione di montaggio
+Pavimento;
+Soffitto;
+Parete;
+Angolo a scelta
+Superficie di appoggio
+275 mm x 275 mm
+Peso
+ca. 43,2 kg
+Dati degli assi
+Campo di movimentazione
+A1
+±185 °
+A2
+-230 ° / 50 °
+A3
+±150 °
+A4
+±180 °
+A5
+±110 °
+A6
+±220 °
+Velocità con carico utile nominale
+A1
+200 °/s
+A2
+200 °/s
+A3
+200 °/s
+A4
+230 °/s
+A5
+260 °/s
+A6
+380 °/s
+Condizioni d'esercizio
+Temperatura ambiente per il funziona-
+mento
+da 0 °C a 45 °C (da 273 K a 318 K)
+Classe di protezione
+Classe di protezione (IEC 60529)
+IP54
+Sistema di controllo
+Sistema di controllo
+KR C5 micro
+Certificati
+Requisiti ESD
+IEC61340-5-1; ANSI/ESD S20.20
+Grafica dello spazio di lavoro
+[
+M
+i
+s
+s
+i
+n
+g
+ 
+s
+t
+a
+t
+i
+c
+ 
+c
+o
+n
+t
+e
+n
+t
+ 
+w
+i
+t
+h
+ 
+k
+e
+y
+ 
+'
+f
+i
+g
+u
+r
+e
+'
+]
+ 
+2
+:
+ 
+L
+B
+R
+ 
+i
+i
+s
+y
+ 
+8
+ 
+R
+9
+3
+0
+ 
+Z
+o
+n
+a
+ 
+d
+i
+ 
+l
+a
+v
+o
+r
+o
+,
+ 
+v
+i
+s
+t
+a
+ 
+l
+a
+t
+e
+r
+a
+l
+e
+Grafico della portata
+[
+M
+i
+s
+s
+i
+n
+g
+ 
+s
+t
+a
+t
+i
+c
+ 
+c
+o
+n
+t
+e
+n
+t
+ 
+w
+i
+t
+h
+ 
+k
+e
+y
+ 
+'
+f
+i
+g
+u
+r
+e
+'
+]
+ 
+3
+:
+ 
+L
+B
+R
+ 
+i
+i
+s
+y
+ 
+8
+ 
+R
+9
+3
+0
+ 
+D
+i
+a
+g
+r
+a
+m
+m
+a
+ 
+d
+i
+ 
+c
+a
+r
+i
+c
+o
+Il LBR iisy 8 R930 è progettato per una portata nominale di 8 kg in grado di sfrut-
+tare al meglio le prestazioni e la dinamicità del robot. Il carico utile massimo di
+9,6 kg vale solo quando la posizione del baricentro è 0 mm. La situazione di cari-
+co specifica deve essere verificata con KUKA.Load o KUKA Compose. Per un’ul-
+teriore consulenza il servizio di assistenza KUKA rimane a vostra disposizione.
+Flangia d’attacco
+[
+M
+i
+s
+s
+i
+n
+g
+ 
+s
+t
+a
+t
+i
+c
+ 
+c
+o
+n
+t
+e
+n
+t
+ 
+w
+i
+t
+h
+ 
+k
+e
+y
+ 
+'
+f
+i
+g
+u
+r
+e
+'
+]
+ 
+4
+:
+ 
+F
+l
+a
+n
+g
+i
+a
+ 
+d
+i
+ 
+u
+s
+c
+i
+t
+a
+ 
+(
+o
+p
+z
+i
+o
+n
+a
+l
+e
+)
+Il robot è dotato di un’alimentazione di energia interna utilizzabile dal cliente per gli
+assi da 1 a 6, con 8 cavi di comando e un cavo Ethernet da 1 Gbit.
+ 
+ 
+Le indicazioni per quanto riguarda la qualità e l'utilizzabilità dei prodotti non rappresentano però una garanzia sulle caratteristiche del prodotto. Queste indicazione sono solamente informative.
+Determinante per il volume delle nostre forniture e prestazioni è l'oggetto del contratto stipulato. I dati tecnici e le immagini non sono vincolanti per le forniture. Salvo modifiche.
+0000-410-203 / V1.1 / 26.05.2023 / it
+KUKA Deutschland GmbH Zugspitzstrasse 140, 86165 Augsburg, Germania. Tel.: +49 821 797-4000, www.kuka.com

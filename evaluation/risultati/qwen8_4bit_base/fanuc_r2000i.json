@@ -1,0 +1,97 @@
+{
+ "robot_id": "fanuc_r2000i",
+ "identificazione": {
+  "modello": "R-2000/165F",
+  "costruttore": "STAR AUTOMATION"
+ },
+ "assi_controllati": 6,
+ "limiti": {
+  "J1": {
+   "min": -180,
+   "max": 180,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "J2": {
+   "min": -135,
+   "max": 135,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "J3": {
+   "min": -361.8,
+   "max": 361.8,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "J4": {
+   "min": -720,
+   "max": 720,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "J5": {
+   "min": -250,
+   "max": 250,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "J6": {
+   "min": -720,
+   "max": 720,
+   "ampiezza": null,
+   "unita": "deg"
+  }
+ },
+ "geometria": {
+  "d1": {
+   "valore": 211,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "211",
+    "posizione": "vista laterale, altezza del primo asse"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a1": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non quotato nel disegno"
+  },
+  "a2": {
+   "valore": 107,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "107",
+    "posizione": "vista laterale, tra asse 2 e asse 3"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a3": {
+   "valore": 67,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "67",
+    "posizione": "vista laterale, tra asse 3 e polso"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "d6": {
+   "valore": 69,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "69",
+    "posizione": "vista laterale, diametro del polso"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  }
+ },
+ "reach_dichiarato": 265,
+ "note": null
+}

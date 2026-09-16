@@ -1,0 +1,100 @@
+{
+ "robot_id": "yaskawa_gp7",
+ "identificazione": {
+  "modello": "MOTOMAN GP7",
+  "costruttore": "MOTOMAN"
+ },
+ "assi_controllati": 6,
+ "limiti": {
+  "S": {
+   "min": -170,
+   "max": 170,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "L": {
+   "min": -65,
+   "max": 145,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "U": {
+   "min": -70,
+   "max": 190,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "R": {
+   "min": -190,
+   "max": 190,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "B": {
+   "min": -135,
+   "max": 135,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "T": {
+   "min": -360,
+   "max": 360,
+   "ampiezza": null,
+   "unita": "deg"
+  }
+ },
+ "geometria": {
+  "d1": {
+   "valore": 493,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "493",
+    "posizione": "vista laterale, altezza della spalla rispetto alla base"
+   },
+   "confidenza": 0.95,
+   "nota": null
+  },
+  "a1": {
+   "valore": 0,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "0",
+    "posizione": "vista laterale, scostamento orizzontale tra asse 1 e 2"
+   },
+   "confidenza": 0.95,
+   "nota": null
+  },
+  "a2": {
+   "valore": 233,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "233",
+    "posizione": "vista laterale, distanza tra asse 2 e 3"
+   },
+   "confidenza": 0.95,
+   "nota": null
+  },
+  "a3": {
+   "valore": 250,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "250",
+    "posizione": "vista laterale, distanza tra asse 3 e centro polso"
+   },
+   "confidenza": 0.95,
+   "nota": null
+  },
+  "d6": {
+   "valore": 190,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "190",
+    "posizione": "vista laterale, distanza tra centro polso e flangia"
+   },
+   "confidenza": 0.95,
+   "nota": null
+  }
+ },
+ "reach_dichiarato": 927,
+ "note": null
+}

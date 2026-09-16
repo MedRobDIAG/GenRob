@@ -1,0 +1,110 @@
+{
+ "robot_id": "abb_irb6400pe",
+ "identificazione": {
+  "modello": "abb_irb6400pe",
+  "costruttore": "ABB"
+ },
+ "assi_controllati": 6,
+ "limiti": {
+  "1": {
+   "min": -180,
+   "max": 180,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "2": {
+   "min": -70,
+   "max": 70,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "3": {
+   "min": -28,
+   "max": 105,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "4": {
+   "min": -200,
+   "max": 200,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "5": {
+   "min": -120,
+   "max": 120,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "6": {
+   "min": -300,
+   "max": 300,
+   "ampiezza": null,
+   "unita": "deg"
+  }
+ },
+ "geometria": {
+  "d1": {
+   "valore": 900.0,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "a1": {
+   "valore": 187.9,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "a2": {
+   "valore": 950.0,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "a3": {
+   "valore": 1171.8,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "d4": {
+   "valore": null,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "d6": {
+   "valore": null,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  }
+ },
+ "reach_dichiarato": null,
+ "note": "ORACOLO: valori ufficiali. Un validatore che boccia questo e' rotto."
+}

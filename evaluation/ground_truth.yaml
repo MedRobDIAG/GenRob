@@ -1,0 +1,167 @@
+# DEMIURGE — verità di confronto per la campagna VLM
+# REVISIONE 2 (2026-09-09) — riscritta dopo la review della Fase 1.
+#
+# ================================================================================
+# PERCHE' QUESTA REVISIONE
+# La revisione 1 era in gran parte una MIA lettura dei disegni, "verificata" con il
+# test di chiusura sul reach. Quel test si e' rivelato privo di valore probatorio:
+# sulla pagina del GP8 esistono 21.731 quaterne di numeri che soddisfano la formula
+# di chiusura entro 2 mm. Trovarne una che torna e' garantito, non informativo.
+# Dimostrazione diretta: avevo predetto GP7 a2=545 e la chiusura approvava; il valore
+# ufficiale e' 445. Due geometrie diverse, entrambe chiudono, la mia era sbagliata.
+#
+# Questa revisione ancora ogni caso a un MODELLO UFFICIALE ESTERNO, e valida ogni
+# fonte verificando che i limiti di giunto dell'URDF coincidano con quelli della
+# scheda tecnica. Le mie letture non fanno piu' parte del metro di misura.
+# ================================================================================
+#
+# CONVENZIONE DELLE GRANDEZZE (identica a quella del prompt dato ai modelli)
+#   d1  altezza dell'asse 2 sopra il piano di appoggio
+#   a1  scostamento dell'asse 2 rispetto all'asse 1, NEL PIANO della vista laterale
+#   a2  distanza asse 2 -> asse 3
+#   a3  distanza asse 3 -> CENTRO POLSO (intersezione degli assi 4,5,6)
+#   d6  distanza centro polso -> flangia
+#   y2  offset LATERALE dell'asse 2, fuori dal piano della vista  <- vedi nota finale
+# Tutte ricavate dagli URDF ufficiali per composizione cinematica a q=0, non lette.
+
+revisione: 2
+data: 2026-09-09
+
+# ================================================================================
+# LIVELLO A — verità esterna. Usabili per misurare l'ACCURATEZZA.
+# ================================================================================
+livello_A:
+
+  kuka_kr4_R600:
+    costruttore: KUKA
+    famiglia: antropomorfo
+    fonte: "kroshu/kuka_robot_descriptions — kuka_agilus_support/urdf/kr4_r600_macro.xacro"
+    fonte_validata: "tutti e 6 i limiti dell'URDF coincidono esattamente con la scheda tecnica"
+    documento_input: "scheda KUKA KR 4 R600 (disegno RASTER, nessuna quota nel livello di testo)"
+    assi: 6
+    polso_sferico: true          # assi 4,5,6 concorrenti entro 0,00 mm — Pieper soddisfatta
+    reach_dichiarato_mm: 601
+    reach_riferito_a: "centro polso (verificato: sbraccio max calcolato 602,3 mm, scarto +1,3)"
+    geometria_mm: {d1: 330.0, a2: 290.0, a3: 270.2, y2: +63.6}
+    limiti_deg: {A1: [-170,170], A2: [-195,40], A3: [-115,150], A4: [-185,185], A5: [-120,120], A6: [-350,350]}
+    nota: >
+      Era il "caso duro senza verita' di confronto". Ora ce l'ha. Resta il caso piu'
+      difficile come INPUT: disegno raster, quote riferite all'inviluppo, spalla sghemba.
+
+  kuka_iisy8_R930:
+    costruttore: KUKA
+    famiglia: antropomorfo
+    fonte: "kroshu/kuka_robot_descriptions — kuka_lbr_iisy_support/urdf/lbr_iisy8_r930_macro.xacro"
+    fonte_validata: "tutti e 6 i limiti coincidono esattamente con la scheda"
+    documento_input: "scheda LBR iisy 8 R930 (disegno RASTER)"
+    assi: 6
+    polso_sferico: true
+    reach_dichiarato_mm: 930
+    reach_riferito_a: "flangia (NON il centro polso: al centro polso lo sbraccio max e' 753,6 mm)"
+    geometria_mm: {d1: 300.0, a2: 385.7, a3: 292.7, y2: -101.1}
+    limiti_deg: {A1: [-185,185], A2: [-230,50], A3: [-150,150], A4: [-180,180], A5: [-110,110], A6: [-220,220]}
+    correzione_rev1: "avevo dichiarato a3=367 e d6=178: SBAGLIATI. a3 vero = 292,7."
+
+  yaskawa_gp8:
+    costruttore: Yaskawa
+    famiglia: antropomorfo
+    fonte: "ros-industrial/motoman — motoman_gp8_support/urdf/gp8_macro.xacro (confermato su due rami)"
+    fonte_validata: "i 6 limiti coincidono con il flyer e con la brochure di serie"
+    documento_input: "Flyer MOTOMAN GP8 p.2 (disegno VETTORIALE, quote nel livello di testo)"
+    assi: 6
+    reach_dichiarato_mm: 727
+    reach_riferito_a: "centro polso (40 + 345 + hypot(340,40) = 727,35)"
+    geometria_mm: {d1: 330.0, a1: 40.0, a2: 345.0, a3: 342.3, d6: 80.0}
+    nota_a3: "asse 3 -> centro polso = hypot(340,40); polso sferico: assi 4,5,6 concorrono in (380,0,715)"
+    limiti_deg: {S: [-170,170], L: [-65,145], U: [-70,190], R: [-190,190], B: [-135,135], T: [-360,360]}
+    correzione_rev1: "d1=330 era stato omesso (registrato null): c'e', nel disegno."
+
+  yaskawa_gp7:
+    costruttore: Yaskawa
+    famiglia: antropomorfo
+    fonte: "ros-industrial/motoman — motoman_gp7_support/urdf/gp7_macro.xacro"
+    documento_input: "brochure MOTOMAN GP Series p.10 (VETTORIALE)"
+    assi: 6
+    reach_dichiarato_mm: 927
+    geometria_mm: {d1: 330.0, a1: 40.0, a2: 445.0, a3: 441.8, d6: 80.0}
+    limiti_deg: {S: [-170,170], L: [-65,145], U: [-70,190], R: [-190,190], B: [-135,135], T: [-360,360]}
+    correzione_rev1: >
+      ERRORE GRAVE nella rev.1: avevo dichiarato a2=545 e avambraccio 340, dedotti dalla
+      chiusura sul reach. I valori veri sono 445 e 440. Entrambe le geometrie chiudono su
+      927 (927,3 la mia, 926,8 quella vera): e' la prova diretta che la chiusura non
+      discrimina. Se non corretta, questa voce avrebbe attribuito errori a estrazioni giuste.
+
+  abb_irb6400pe:
+    costruttore: ABB
+    famiglia: antropomorfo
+    convenzione_variabili_giunto: assoluta_con_accoppiamento
+    fonte: >
+      identificazione ai minimi quadrati su 7 pose UFFICIALI (tabella FK della Product
+      Specification p.13). Non e' un URDF esterno, ma i dati di ingresso sono del
+      costruttore e il risultato e' verificato contro grandezze non usate nel fit.
+    fonte_validata:
+      - "RMS 0,172 mm su 14 equazioni / 6 incognite"
+      - "d1 identificato 900,0 = quota 900 del disegno, mai usata nel fit"
+      - "posa 0 calcolata (1337,8; 2074,8) vs documento (1338; 2075)"
+      - "inviluppo: 2252,4 vs 2253 | 2588,4 vs 2589 | 53,0 vs 53"
+    documento_input: "Product Specification IRB 6400PE p.13 (VETTORIALE, con tabella di pose)"
+    assi: 6
+    geometria_mm: {d1: 900.0, a1: 187.9, a2: 950.0, a3: 1171.8}
+    limiti_deg: {1: [-180,180], 2: [-70,70], 3: [-28,105], 4: [-200,200], 5: [-120,120], 6: [-300,300]}
+    vincolo_accoppiamento: "angolo fra asse 2 e asse 3 fra 25 e 155 deg, 90 in posa 0"
+    aperto: "la quota 878 del disegno non e' ancora riconciliata (scarto 93 mm): possibile errore nella mia lettura del vincolo di accoppiamento"
+
+# ================================================================================
+# LIVELLO B — nessuna verità esterna. NON usabili per misurare l'accuratezza.
+# Servono solo a OSSERVARE IL COMPORTAMENTO, che non richiede un metro:
+# il modello si astiene dove il dato non c'e', o inventa?
+# ================================================================================
+livello_B:
+
+  fanuc_r2000i:
+    costruttore: FANUC
+    documento_input: "scheda R-2000i/165F p.2 — bilingue IT/EN, tabella ripetuta due volte"
+    trappole_note:
+      - "duplicazione bilingue: il modello produce record doppi o in conflitto?"
+      - "i limiti sono AMPIEZZE, non estremi: lo dichiara o inventa un min/max simmetrico?"
+      - "il reach massimo NON compare in tabella: lo lascia null o lo deduce?"
+    limiti_ampiezza_deg: {J1: 360, J2: 135, J3: 361.8, J4: 720, J5: 250, J6: 720}
+    nota: "ROS-Industrial ha fanuc_r2000ic, modello diverso dal nostro: non usato per non introdurre una verita' sbagliata"
+
+  comau_smarts2:
+    costruttore: COMAU
+    documento_input: "scheda Smart S2 — SCANSIONE, 0 caratteri di testo estraibile"
+    perche_e_utile: >
+      unico documento del corpus interamente visivo, e unico con DUE VISTE ORTOGONALI.
+      Misura il divario fra canale visivo puro e caso vettoriale, e su di lui l'offset
+      laterale sarebbe in linea di principio ricavabile (vedi nota finale).
+    reach_dichiarato_mm: 1458
+    altezza_dichiarata_mm: 2208
+    limiti_deg: {1: [-152.5,152.5], 2: [-105,105], 3: [-155,125], 4: [-210,210], 5: [-125,125], 6: [-2700,2700]}
+
+# ================================================================================
+# NOTE DI VALIDITA' — da riportare nel report
+# ================================================================================
+note:
+
+  offset_laterale:
+    osservazione: "entrambi i KUKA hanno l'asse 2 spostato lateralmente di 60-100 mm, fuori dal piano della vista laterale"
+    impatto_sul_reach: "√(930² + 101²) − 930 ≈ 5,5 mm  -> quasi invisibile ai validatori"
+    impatto_sulla_posa: "≈ 101 mm  -> enorme per un ambiente VR in cui si manipola l'utensile"
+    conseguenza: >
+      da una singola vista laterale il parametro NON e' recuperabile, e ne' la chiusura
+      ne' l'inviluppo laterale lo segnalano. E' un limite dell'INPUT, non del metodo.
+      Serve una seconda vista ortogonale (che nel corpus ha solo la COMAU) oppure il CAD.
+
+  reach_non_e_una_grandezza_univoca:
+    osservazione: "KR 4 R600 misura il reach al centro polso; LBR iisy 8 R930 alla flangia. Stesso costruttore."
+    conseguenza: "il predicato di chiusura non puo' assumere un punto di riferimento fisso: va trattato come incognita"
+
+  polso_sferico:
+    osservazione: "su KR 4 R600 e iisy 8 R930 i tre assi del polso concorrono entro 0,00 mm"
+    conseguenza: "l'ipotesi di default del catalogo e' confermata su 2 casi; risponde in parte alla domanda C alla prof"
+
+  bias_residuo:
+    - "5 casi su 7 hanno verita' esterna, ma tutti e 5 sono robot popolari e ben supportati in ROS: chi ha un URDF pubblico e' probabilmente anche meglio documentato della media. Il campione e' ottimistico."
+    - "3 dei 5 casi di livello A hanno disegno VETTORIALE; solo 2 sono raster. Il canale visivo puro e' sottorappresentato."
+    - "una sola famiglia cinematica (antropomorfo) e nessun robot fuori dall'Europa/Giappone."

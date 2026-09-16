@@ -1,0 +1,97 @@
+{
+ "robot_id": "yaskawa_gp8",
+ "identificazione": {
+  "modello": "MOTOMAN GP8",
+  "costruttore": "Yaskawa Europe GmbH"
+ },
+ "assi_controllati": 6,
+ "limiti": {
+  "S": {
+   "min": -170,
+   "max": 170,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "L": {
+   "min": -65,
+   "max": 145,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "U": {
+   "min": -70,
+   "max": 190,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "R": {
+   "min": -135,
+   "max": 135,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "B": {
+   "min": -135,
+   "max": 135,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "T": {
+   "min": -360,
+   "max": 360,
+   "ampiezza": null,
+   "unita": "deg"
+  }
+ },
+ "geometria": {
+  "d1": {
+   "valore": 330,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "330",
+    "posizione": "vista laterale, in basso a sinistra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a1": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non quotato nel disegno"
+  },
+  "a2": {
+   "valore": 345,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "345",
+    "posizione": "vista laterale, a sinistra del disegno principale"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a3": {
+   "valore": 330,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "330",
+    "posizione": "vista laterale, a sinistra del disegno principale"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "d6": {
+   "valore": 727,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "727",
+    "posizione": "vista laterale, in alto a destra del disegno principale"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  }
+ },
+ "reach_dichiarato": 727,
+ "note": null
+}

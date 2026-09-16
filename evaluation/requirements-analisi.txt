@@ -1,0 +1,6 @@
+# Livello DETERMINISTICO: rilettura e punteggio dei risultati gia' versionati.
+# Nessuna GPU, nessuna rete, nessun modello. Installazione in pochi secondi.
+PyYAML==6.0.3
+
+# solo per scala/ (Step 0 sulla fedelta' metrica dei disegni)
+PyMuPDF==1.28.2

@@ -1,0 +1,97 @@
+{
+ "robot_id": "fanuc_r2000i",
+ "identificazione": {
+  "modello": "R-2000i/165F",
+  "costruttore": "STAR AUTOMATION EUROPE S.p.A."
+ },
+ "assi_controllati": 6,
+ "limiti": {
+  "J1": {
+   "min": -180,
+   "max": 180,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "J2": {
+   "min": -180,
+   "max": 180,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "J3": {
+   "min": -180,
+   "max": 180,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "J4": {
+   "min": -180,
+   "max": 180,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "J5": {
+   "min": -180,
+   "max": 180,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "J6": {
+   "min": -180,
+   "max": 180,
+   "ampiezza": null,
+   "unita": "deg"
+  }
+ },
+ "geometria": {
+  "d1": {
+   "valore": 252.5,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "252.5",
+    "posizione": "vista laterale, in basso a destra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a1": {
+   "valore": null,
+   "unita": null,
+   "source": null,
+   "confidenza": 0.0,
+   "nota": "non quotato nel disegno"
+  },
+  "a2": {
+   "valore": 225,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "225",
+    "posizione": "vista laterale, a sinistra del polso"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a3": {
+   "valore": 211,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "211",
+    "posizione": "vista laterale, sotto l'asse 3"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "d6": {
+   "valore": 213.3,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "213.3",
+    "posizione": "vista laterale, in basso a destra vicino alla flangia"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  }
+ },
+ "reach_dichiarato": 814.5,
+ "note": null
+}

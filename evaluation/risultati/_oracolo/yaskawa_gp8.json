@@ -1,0 +1,110 @@
+{
+ "robot_id": "yaskawa_gp8",
+ "identificazione": {
+  "modello": "yaskawa_gp8",
+  "costruttore": "Yaskawa"
+ },
+ "assi_controllati": 6,
+ "limiti": {
+  "S": {
+   "min": -170,
+   "max": 170,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "L": {
+   "min": -65,
+   "max": 145,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "U": {
+   "min": -70,
+   "max": 190,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "R": {
+   "min": -190,
+   "max": 190,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "B": {
+   "min": -135,
+   "max": 135,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "T": {
+   "min": -360,
+   "max": 360,
+   "ampiezza": null,
+   "unita": "deg"
+  }
+ },
+ "geometria": {
+  "d1": {
+   "valore": 330.0,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "a1": {
+   "valore": 40.0,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "a2": {
+   "valore": 345.0,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "a3": {
+   "valore": 342.3,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "d4": {
+   "valore": null,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "d6": {
+   "valore": 80.0,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  }
+ },
+ "reach_dichiarato": 727,
+ "note": "ORACOLO: valori ufficiali. Un validatore che boccia questo e' rotto."
+}

@@ -1,0 +1,439 @@
+KR 4 R600
+[
+M
+i
+s
+s
+i
+n
+g
+ 
+s
+t
+a
+t
+i
+c
+ 
+c
+o
+n
+t
+e
+n
+t
+ 
+w
+i
+t
+h
+ 
+k
+e
+y
+ 
+'
+f
+i
+g
+u
+r
+e
+'
+]
+ 
+1
+:
+ 
+R
+o
+b
+o
+t
+ 
+d
+e
+l
+l
+a
+ 
+f
+a
+m
+i
+g
+l
+i
+a
+ 
+K
+R
+ 
+A
+G
+I
+L
+U
+S
+ 
+4
+Dati tecnici
+Massimo raggio d’azione
+601 mm
+Carico massimo
+4,63 kg
+Ripetibilità di posizionamento (ISO
+9283)
+± 0,015 mm
+Numero assi
+6
+Posizione di montaggio
+Pavimento;
+Soffitto;
+Parete;
+Angolo a scelta
+Superficie di appoggio
+179 mm x 179 mm
+Peso
+ca. 27 kg
+Dati degli assi
+Campo di movimentazione
+A1
+±170 °
+A2
+-195 ° / 40 °
+A3
+-115 ° / 150 °
+A4
+±185 °
+A5
+±120 °
+A6
+±350 °
+Condizioni d'esercizio
+Temperatura ambiente per il funzio-
+namento
+da 0 °C a 55 °C (da 273 K a 328 K)
+Classe di protezione
+Classe di protezione (IEC 60529)
+IP40
+Classe di protezione polso del robot
+(IEC 60529)
+IP40
+Sistema di controllo
+Sistema di controllo
+KR C5 micro
+Certificati
+Requisiti ESD
+IEC61340-5-1; ANSI/ESD S20.20
+Tempo ciclo
+152 Cicli al minuto (25 mm / 305 mm / 25 mm, 1 kg)
+[
+M
+i
+s
+s
+i
+n
+g
+ 
+s
+t
+a
+t
+i
+c
+ 
+c
+o
+n
+t
+e
+n
+t
+ 
+w
+i
+t
+h
+ 
+k
+e
+y
+ 
+'
+f
+i
+g
+u
+r
+e
+'
+]
+ 
+2
+:
+ 
+C
+i
+c
+l
+o
+ 
+d
+i
+ 
+p
+a
+l
+l
+e
+t
+t
+i
+z
+z
+a
+z
+i
+o
+n
+e
+Grafica dello spazio di lavoro
+[
+M
+i
+s
+s
+i
+n
+g
+ 
+s
+t
+a
+t
+i
+c
+ 
+c
+o
+n
+t
+e
+n
+t
+ 
+w
+i
+t
+h
+ 
+k
+e
+y
+ 
+'
+f
+i
+g
+u
+r
+e
+'
+]
+ 
+3
+:
+ 
+K
+R
+ 
+4
+ 
+R
+6
+0
+0
+,
+ 
+z
+o
+n
+a
+ 
+d
+i
+ 
+l
+a
+v
+o
+r
+o
+,
+ 
+v
+i
+s
+t
+a
+ 
+l
+a
+t
+e
+r
+a
+l
+e
+Grafico della portata
+[
+M
+i
+s
+s
+i
+n
+g
+ 
+s
+t
+a
+t
+i
+c
+ 
+c
+o
+n
+t
+e
+n
+t
+ 
+w
+i
+t
+h
+ 
+k
+e
+y
+ 
+'
+f
+i
+g
+u
+r
+e
+'
+]
+ 
+4
+:
+ 
+G
+r
+a
+f
+i
+c
+o
+ 
+d
+e
+l
+l
+a
+ 
+p
+o
+r
+t
+a
+t
+a
+Il KR 4 R600 è progettato per una portata nominale di 3 kg in grado di
+sfruttare al meglio le prestazioni e la dinamicità del robot. Il carico utile
+massimo di 4,63 kg vale solo quando sono applicati una posizione del
+baricentro di 0 mm e un carico aggiuntivo ottimizzato per la situazione di
+carico. La situazione di carico specifica deve essere verificata con
+KUKA.Load o KUKA Compose. Per un’ulteriore consulenza il servizio di
+assistenza KUKA rimane a vostra disposizione.
+Flangia d'attacco
+[
+M
+i
+s
+s
+i
+n
+g
+ 
+s
+t
+a
+t
+i
+c
+ 
+c
+o
+n
+t
+e
+n
+t
+ 
+w
+i
+t
+h
+ 
+k
+e
+y
+ 
+'
+f
+i
+g
+u
+r
+e
+'
+]
+ 
+5
+:
+ 
+F
+l
+a
+n
+g
+i
+a
+ 
+d
+i
+ 
+a
+v
+v
+i
+t
+a
+m
+e
+n
+t
+o
+ 
+ 
+Le indicazioni per quanto riguarda la qualità e l'utilizzabilità dei prodotti non rappresentano però una garanzia sulle caratteristiche del prodotto. Queste indicazione sono solamente informative.
+Determinante per il volume delle nostre forniture e prestazioni è l'oggetto del contratto stipulato. I dati tecnici e le immagini non sono vincolanti per le forniture. Salvo modifiche.
+0000-356-043 / V3.1 / 27.05.2022 / it
+KUKA Deutschland GmbH Zugspitzstrasse 140, 86165 Augsburg, Germania. Tel.: +49 821 797-4000, www.kuka.com

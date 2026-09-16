@@ -1,0 +1,110 @@
+{
+ "robot_id": "kuka_kr4_R600",
+ "identificazione": {
+  "modello": "kuka_kr4_R600",
+  "costruttore": "KUKA"
+ },
+ "assi_controllati": 6,
+ "limiti": {
+  "A1": {
+   "min": -170,
+   "max": 170,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "A2": {
+   "min": -195,
+   "max": 40,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "A3": {
+   "min": -115,
+   "max": 150,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "A4": {
+   "min": -185,
+   "max": 185,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "A5": {
+   "min": -120,
+   "max": 120,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "A6": {
+   "min": -350,
+   "max": 350,
+   "ampiezza": null,
+   "unita": "deg"
+  }
+ },
+ "geometria": {
+  "d1": {
+   "valore": 330.0,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "a1": {
+   "valore": null,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "a2": {
+   "valore": 290.0,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "a3": {
+   "valore": 270.2,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "d4": {
+   "valore": null,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  },
+  "d6": {
+   "valore": null,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "oracolo",
+    "posizione": "URDF ufficiale",
+    "bbox": null
+   },
+   "confidenza": 1.0
+  }
+ },
+ "reach_dichiarato": 601,
+ "note": "ORACOLO: valori ufficiali. Un validatore che boccia questo e' rotto."
+}

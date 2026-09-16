@@ -1,0 +1,226 @@
+[
+ {
+  "pagina": 8,
+  "robot": "GP4",
+  "coppie": 64,
+  "scala": 2.878047576744646,
+  "frazione_picco": 0.0625,
+  "dispersione_interna": 0.003194836801398014
+ },
+ {
+  "pagina": 10,
+  "robot": "GP7",
+  "coppie": 61,
+  "scala": 7.181088314005351,
+  "frazione_picco": 0.08196721311475409,
+  "dispersione_interna": 0.00527032659369019
+ },
+ {
+  "pagina": 12,
+  "robot": "GP8",
+  "coppie": 64,
+  "scala": 3.83314543404735,
+  "frazione_picco": 0.046875,
+  "dispersione_interna": 0.006854705593053664
+ },
+ {
+  "pagina": 14,
+  "robot": "GP8L",
+  "coppie": 62,
+  "scala": 0.22193211488250647,
+  "frazione_picco": 0.03225806451612903,
+  "dispersione_interna": 0.0
+ },
+ {
+  "pagina": 16,
+  "robot": "GP10",
+  "coppie": 59,
+  "scala": 5.903381642512077,
+  "frazione_picco": 0.05084745762711865,
+  "dispersione_interna": 0.002862329802581954
+ },
+ {
+  "pagina": 18,
+  "robot": "GP12",
+  "coppie": 61,
+  "scala": 6.135770234986944,
+  "frazione_picco": 0.04918032786885246,
+  "dispersione_interna": 0.0022959891664493305
+ },
+ {
+  "pagina": 20,
+  "robot": "GP20",
+  "coppie": 63,
+  "scala": 0.5744125326370756,
+  "frazione_picco": 0.031746031746031744,
+  "dispersione_interna": 0.0
+ },
+ {
+  "pagina": 22,
+  "robot": "GP20HL",
+  "coppie": 90,
+  "scala": 2.3498694516971272,
+  "frazione_picco": 0.044444444444444446,
+  "dispersione_interna": 0.0024615524628948397
+ },
+ {
+  "pagina": 24,
+  "robot": "GP25",
+  "coppie": 93,
+  "scala": 10.645853481624751,
+  "frazione_picco": 0.06451612903225806,
+  "dispersione_interna": 0.004435239555985145
+ },
+ {
+  "pagina": 25,
+  "robot": "GP25-12",
+  "coppie": 90,
+  "scala": 11.649223819824408,
+  "frazione_picco": 0.044444444444444446,
+  "dispersione_interna": 0.0026069189745743858
+ },
+ {
+  "pagina": 28,
+  "robot": "GP35L",
+  "coppie": 76,
+  "scala": 4.700966630380513,
+  "frazione_picco": 0.05263157894736842,
+  "dispersione_interna": 0.0028225933875715044
+ },
+ {
+  "pagina": 30,
+  "robot": "GP35H",
+  "coppie": 93,
+  "scala": 2.3498694516971272,
+  "frazione_picco": 0.03225806451612903,
+  "dispersione_interna": 0.0017273590885737552
+ },
+ {
+  "pagina": 32,
+  "robot": "GP50",
+  "coppie": 76,
+  "scala": 0.3660130718954248,
+  "frazione_picco": 0.02631578947368421,
+  "dispersione_interna": 0.0
+ },
+ {
+  "pagina": 34,
+  "robot": "GP70L",
+  "coppie": 62,
+  "scala": 3.0026109660574405,
+  "frazione_picco": 0.04838709677419355,
+  "dispersione_interna": 0.004099463867394239
+ },
+ {
+  "pagina": 36,
+  "robot": "GP88",
+  "coppie": 64,
+  "scala": 0.39215686274509803,
+  "frazione_picco": 0.03125,
+  "dispersione_interna": 0.0
+ },
+ {
+  "pagina": 38,
+  "robot": "GP110",
+  "coppie": 65,
+  "scala": 0.7843137254901961,
+  "frazione_picco": 0.03076923076923077,
+  "dispersione_interna": 0.0
+ },
+ {
+  "pagina": 40,
+  "robot": "GP180-120",
+  "coppie": 68,
+  "scala": 7.328990228013032,
+  "frazione_picco": 0.04411764705882353,
+  "dispersione_interna": 0.005311753933872175
+ },
+ {
+  "pagina": 42,
+  "robot": "GP180",
+  "coppie": 70,
+  "scala": 8.06788511749347,
+  "frazione_picco": 0.04285714285714286,
+  "dispersione_interna": 0.0019584572793516163
+ },
+ {
+  "pagina": 44,
+  "robot": "GP215",
+  "coppie": 73,
+  "scala": 9.268929503916446,
+  "frazione_picco": 0.0410958904109589,
+  "dispersione_interna": 0.003462621953617177
+ },
+ {
+  "pagina": 46,
+  "robot": "GP215-200T",
+  "coppie": 62,
+  "scala": 1.5665796344647516,
+  "frazione_picco": 0.04838709677419355,
+  "dispersione_interna": 0.0012286825042336755
+ },
+ {
+  "pagina": 48,
+  "robot": "GP225",
+  "coppie": 71,
+  "scala": 1.8941876141231075,
+  "frazione_picco": 0.056338028169014086,
+  "dispersione_interna": 0.0006531678641412357
+ },
+ {
+  "pagina": 50,
+  "robot": "GP250",
+  "coppie": 74,
+  "scala": 1.5665796344647516,
+  "frazione_picco": 0.04054054054054054,
+  "dispersione_interna": 0.003051758150330118
+ },
+ {
+  "pagina": 52,
+  "robot": "GG250",
+  "coppie": 81,
+  "scala": 1.9582245430809393,
+  "frazione_picco": 0.037037037037037035,
+  "dispersione_interna": 0.0012286825042336354
+ },
+ {
+  "pagina": 54,
+  "robot": "GP280",
+  "coppie": 78,
+  "scala": 1.032668201143358,
+  "frazione_picco": 0.02564102564102564,
+  "dispersione_interna": 1.1172435367539265e-05
+ },
+ {
+  "pagina": 56,
+  "robot": "GP280L",
+  "coppie": 75,
+  "scala": 4.739336492890994,
+  "frazione_picco": 0.04,
+  "dispersione_interna": 0.003642729722954751
+ },
+ {
+  "pagina": 58,
+  "robot": "GP360",
+  "coppie": 78,
+  "scala": 2.2800925925925917,
+  "frazione_picco": 0.038461538461538464,
+  "dispersione_interna": 0.003666274840603634
+ },
+ {
+  "pagina": 60,
+  "robot": "GP400",
+  "coppie": 77,
+  "scala": 4.1522491349480966,
+  "frazione_picco": 0.03896103896103896,
+  "dispersione_interna": 0.005877020227430817
+ },
+ {
+  "pagina": 62,
+  "robot": "GP600",
+  "coppie": 74,
+  "scala": 1.0704960835509134,
+  "frazione_picco": 0.05405405405405406,
+  "dispersione_interna": 0.0042710442402654775
+ }
+]

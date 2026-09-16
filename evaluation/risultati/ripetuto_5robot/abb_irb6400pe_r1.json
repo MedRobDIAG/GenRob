@@ -1,0 +1,100 @@
+{
+ "robot_id": "abb_irb6400pe",
+ "identificazione": {
+  "modello": "IRB 6400PE M2000",
+  "costruttore": "ABB"
+ },
+ "assi_controllati": 6,
+ "limiti": {
+  "Axis 1": {
+   "min": -180,
+   "max": 180,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "Axis 2": {
+   "min": -70,
+   "max": 70,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "Axis 3": {
+   "min": -28,
+   "max": 105,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "Axis 4": {
+   "min": -200,
+   "max": 200,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "Axis 5": {
+   "min": -120,
+   "max": 120,
+   "ampiezza": null,
+   "unita": "deg"
+  },
+  "Axis 6": {
+   "min": -300,
+   "max": 300,
+   "ampiezza": null,
+   "unita": "deg"
+  }
+ },
+ "geometria": {
+  "d1": {
+   "valore": 900,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "900",
+    "posizione": "vista laterale, a sinistra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a1": {
+   "valore": 878,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "878",
+    "posizione": "vista laterale, in basso al centro"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a2": {
+   "valore": 2253,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "2253",
+    "posizione": "vista laterale, in basso a destra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "a3": {
+   "valore": 53,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "53",
+    "posizione": "vista laterale, a destra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  },
+  "d6": {
+   "valore": 2589,
+   "unita": "mm",
+   "source": {
+    "testo_quota": "2589",
+    "posizione": "vista laterale, a destra"
+   },
+   "confidenza": 0.9,
+   "nota": null
+  }
+ },
+ "reach_dichiarato": null,
+ "note": "Il raggio d'azione massimo non è indicato né nel disegno né nelle tabelle delle specifiche."
+}

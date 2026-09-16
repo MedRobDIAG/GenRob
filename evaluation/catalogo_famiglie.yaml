@@ -1,0 +1,628 @@
+# DEMIURGE — Catalogo delle famiglie cinematiche
+# ==============================================
+# Livello 1: firma di riconoscimento      (fatto)
+# Livello 2: modello DH parametrico       (fatto)
+# Livello 3: predicati di validazione     (fatto)
+#
+# Scopo: e' il "prior per classe" della Decisione 10. Non e' documentazione: e' il file che il
+# codice di identificazione consuma per sapere quali strutture provare a fittare, quali numeri
+# cercare nel documento, e come verificare il risultato.
+#
+# Fonti:
+#   A. De Luca, "Robotics 1", Sapienza — 00_Introduction.pdf slide 6 (classificazione),
+#     09_DirectKinematics.pdf (convenzione DH classica, tabelle svolte 2R / SCARA / Stanford)
+#   Tabelle parametriche canoniche: Siciliano-Sciavicco-Villani-Oriolo; Spong-Hutchinson-Vidyasagar
+#
+# Convenzione DH: CLASSICA (Decisione 15).  A_i = Rot_z(theta_i) Trans_z(d_i) Trans_x(a_i) Rot_x(alpha_i)
+#
+# ATTENZIONE — limite di unicita' (vale per tutto il livello 2):
+#   La tabella parametrica NON e' unica. E' determinata a meno delle scelte di collocazione dei
+#   sistemi di riferimento: testi diversi danno tabelle diverse per lo stesso robot, che descrivono
+#   la stessa geometria. Cio' che e' INVARIANTE, e quindi cio' che il codice deve usare per
+#   riconoscere e verificare, e':
+#     - quali parametri sono variabili (theta* per R, d* per P)
+#     - il pattern degli alpha (0 oppure +/-90) -> e' la geometria relativa degli assi
+#     - quali a/d sono liberi e non nulli -> sono i numeri da cercare nel documento
+#   Gli offset costanti su theta sono invece convenzione, non struttura.
+#   (E' la stessa ragione per cui URDF ufficiali diversi dello stesso robot divergono — log 3.4,
+#    Decisione 7: il confronto va fatto per equivalenza delle pose, non dei parametri.)
+#
+# Perimetro:
+#   - cinematica parallela (delta): FUORI (Decisione 13)
+#   - cobot ridondanti a 7 assi: FUORI in attesa di risposta (domanda E alla prof)
+
+versione: "0.2"
+data: 2026-09-08
+livelli_completati: [1, 2, 3]
+
+# ===========================================================================
+# VOCABOLARIO
+# ===========================================================================
+vocabolario:
+  relazioni_tra_assi:
+    parallelo:            "stessa direzione, rette distinte (non si incontrano mai)"
+    collineare:           "stessa retta"
+    ortogonale_incidente: "direzioni perpendicolari, le rette si intersecano in un punto"
+    ortogonale_sghembo:   "direzioni perpendicolari, le rette NON si intersecano (c'e' un offset)"
+    incidente:            "le rette si intersecano, angolo qualsiasi"
+  orientamento_rispetto_alla_base:
+    verticale:   "perpendicolare al piano di appoggio"
+    orizzontale: "parallelo al piano di appoggio"
+  tipo_giunto:
+    R: "rotoidale - 1 gdl di rotazione; variabile = theta"
+    P: "prismatico - 1 gdl di traslazione; variabile = d"
+  notazione_dh:
+    "theta*": "parametro VARIABILE (giunto rotoidale)"
+    "d*":     "parametro VARIABILE (giunto prismatico)"
+    "simbolo minuscolo (a1, d1, a2...)": "parametro COSTANTE ma IGNOTO -> da estrarre dal documento"
+    "0 / +90 / -90 / 180": "parametro COSTANTE e NOTO -> determinato dalla geometria della famiglia"
+
+  # ---------------------------------------------------------------------
+  # Convenzione delle variabili di giunto.
+  # Terza cosa da identificare nel documento, oltre alla famiglia e ai numeri.
+  # Non cambia la famiglia: cambia la MAPPA fra gli angoli dichiarati dal costruttore
+  # e gli angoli della tabella DH.
+  # ---------------------------------------------------------------------
+  convenzione_variabili_giunto:
+    relativa:
+      descrizione: "ogni angolo e' misurato rispetto al link precedente. E' la convenzione DH."
+      esempio: "KUKA"
+    assoluta_con_accoppiamento:
+      descrizione: >
+        uno o piu' angoli sono misurati rispetto a un riferimento fisso (tipicamente l'orizzontale)
+        anziche' rispetto al link precedente. Tipico dei bracci azionati da quadrilatero articolato,
+        dove l'orientamento dell'avambraccio e' meccanicamente indipendente da quello del braccio.
+      conversione: "theta3_DH = theta3_costruttore - theta2_costruttore + costante"
+      esempio: "ABB IRB 6400 (verificato: fit con convenzione relativa RMS 255 mm, con assoluta 0,17 mm)"
+      nota_importante: >
+        NON e' una famiglia cinematica diversa: la catena resta RRR antropomorfa.
+        Il quadrilatero e' un meccanismo di trasmissione, non una struttura cinematica diversa.
+        Va identificata perche' altrimenti tutti i numeri, pur letti correttamente, vengono composti male.
+
+# ===========================================================================
+# CHIAVE DI LETTURA DOCUMENTALE (livello 1)
+# L'unita' di misura del campo di movimentazione rivela il tipo di giunto, e sta nel CANALE TESTUALE.
+# ===========================================================================
+discriminazione_da_unita_di_misura:
+  "[mm, mm, mm]":    [cartesiano]
+  "[deg, mm, mm]":   [cilindrico]
+  "[deg, deg, mm]":  [sferico, scara]   # unico caso ambiguo -> richiede una domanda geometrica
+  "[deg, deg, deg]": [antropomorfo]
+  nota: >
+    3 pattern su 4 identificano la famiglia dal solo testo. L'ambiguita' RRP si risolve con
+    una domanda binaria: asse 2 parallelo all'asse 1 (SCARA) o ortogonale incidente (sferico)?
+
+# ===========================================================================
+# PREDICATI DI VALIDAZIONE COMUNI (livello 3) — validi per ogni famiglia
+# ===========================================================================
+validazione_comune:
+  # -------------------------------------------------------------------------
+  # STATO AL 2026-09-13. Questa sezione e' stata RISCRITTA dopo la revisione
+  # critica (log 13) e lo Step 0 sulla coerenza di scala (log 15).
+  # Regola adottata: un predicato entra qui solo dopo essere stato provato sui
+  # 5 casi ancorati DANDOGLI IN PASTO I VALORI UFFICIALI. Se boccia anche una
+  # sola estrazione corretta, non entra. Nessuna eccezione.
+  # -------------------------------------------------------------------------
+
+  prerequisito_obbligatorio:
+    id: segmentazione_della_pagina
+    verifica: >
+      prima di qualunque controllo geometrico la pagina va segmentata in regioni
+      (disegno / tabella / testo). Una riga di tabella con i bordi verticali agli
+      estremi e' GEOMETRICAMENTE IDENTICA a una linea di quota con le sue linee di
+      estensione: sulla pagina Yaskawa GP8 sei valori della tabella specifiche
+      (velocita' e momenti) sono entrati come quote.
+    stato: "MANCANTE in tutti i predicati progettati finora (log 15.4)"
+
+  in_piedi:
+    - id: coerenza_schema
+      verifica: "unita' coerenti; lower < upper per ogni giunto; numero di giunti = numero assi dichiarato"
+      costo: nullo
+      stato: "IN PIEDI. Non intercetta errori sottili, solo incoerenze grossolane."
+    - id: auto_coerenza_fra_ripetizioni
+      verifica: >
+        stesso documento, prompt e ordine diversi: se il modello produce due risposte
+        diverse, almeno una e' sbagliata. Non dice quale: dice che c'e' un problema.
+      stato: "DA TESTARE. Unico predicato che non richiede geometria. Richiede accesso al modello."
+    - id: residuo_di_identificazione
+      verifica: "il residuo RMS del fit e' la misura di incertezza del modello"
+      applicabilita: "SOLO dove il documento contiene dati di posa (1 caso su 5 nel corpus)"
+      stato: "IN PIEDI dove applicabile. 0,17 mm su ABB IRB 6400PE, validato su 3 quote mai usate."
+
+  comportamento_richiesto_al_modello:
+    - id: astensione
+      verifica: >
+        dove il dato non e' nel documento il modello deve rispondere null, non un numero
+        plausibile. NON e' un controllo matematico: e' un comportamento da pretendere e misurare.
+      stato: >
+        DIVENTATA LA METRICA PRIORITARIA (Decisione 33). GroundingME: la maggior parte
+        dei modelli e' allo 0% su questo.
+
+  ritirati_o_declassati:
+    - id: chiusura_inviluppo
+      stato: "DECLASSATO (Decisione 26)"
+      motivo: >
+        nullo come selettore: 21.731 quaterne chiudono sulla sola pagina GP8. Debole come
+        validatore. Inoltre il punto di riferimento del reach non e' univoco: KUKA lo misura
+        al centro polso sul KR 4 R600 e alla flangia sull'iisy 8 R930. Con i valori UFFICIALI
+        la somma planare sbaglia di 41 mm sul KR 4 e di 252 mm sull'iisy.
+      residuo_di_utilita: "solo su un'ipotesi UNICA prodotta in modo indipendente, come rilevatore di errori grossolani"
+    - id: firma_di_simmetria_dei_limiti
+      stato: "RITIRATO (Decisione 25)"
+      motivo: >
+        dedotto da 28 Yaskawa industriali. Falsi positivi su iisy (A3 +/-150), ABB (asse 2 +/-70)
+        e su tutti i cobot UR (+/-360 ovunque, rotazione continua). Regolarita' di un costruttore,
+        non invariante fisico.
+    - id: condizione_di_pieper
+      stato: "RITIRATO COME TEST (Decisione 24)"
+      motivo: >
+        non puo' fallire per costruzione: la geometria del polso non viene estratta, arriva dal
+        template del catalogo, che per definizione ha i tre assi concorrenti. Torna a essere un
+        test solo dove il polso e' IDENTIFICATO dai dati (caso ABB).
+    - id: singolarita_attese
+      stato: "RITIRATO, stessa causa di Pieper"
+    - id: coerenza_di_scala
+      stato: "NON ADOTTATO (Decisione 31)"
+      motivo: >
+        (a) la premessa regge solo entro +/-2% = +/-7 mm su un link da 345, contro una tolleranza
+        di correttezza di 2 mm; (b) la validazione e' CIRCOLARE: per sapere se un disegno e' in
+        scala serve sapere a quale segmento si riferisce una quota, che e' lo stadio 2, cioe' il
+        problema che il predicato dovrebbe sorvegliare; (c) il controllo e' saturo sui vettoriali
+        (~500 lunghezze distinte per pagina: qualunque valore trova un segmento).
+      esperimento_che_chiuderebbe: >
+        ancoraggio umano di riferimento su ~8 quote di un disegno, fatto da una persona del team.
+        Rompe la circolarita'. Non puo' farlo il modello che deve poi essere sorvegliato.
+
+  conclusione: >
+    La tesi "il modello puo' sbagliare, tanto la matematica se ne accorge" NON e' supportata.
+    Non perche' manchi il predicato giusto: perche' i documenti non contengono la ridondanza
+    metrica necessaria a costruirne uno, e la geometria che contengono e' troppa per essere
+    vincolante. L'assicurazione si sposta sulla ridondanza delle FONTI (Decisione 34).
+
+# ===========================================================================
+# LE CINQUE FAMIGLIE
+# ===========================================================================
+famiglie:
+
+  # -------------------------------------------------------------------------
+  - id: cartesiano
+    nome_it: "Cartesiano / a portale (gantry)"
+    sigla: PPP
+    giunti: [P, P, P]
+
+    # ---- LIVELLO 1 -------------------------------------------------------
+    geometria_assi:
+      asse_1: {orientamento_base: qualsiasi}
+      relazioni:
+        - [1, 2, ortogonale_incidente]
+        - [2, 3, ortogonale_incidente]
+        - [1, 3, ortogonale_incidente]
+      descrizione: "tre traslazioni mutuamente ortogonali"
+    firma_documentale:
+      unita_campo_movimentazione: [mm, mm, mm]
+      forma_spazio_lavoro: "parallelepipedo"
+      quote_attese: "tre corse indipendenti X, Y, Z"
+      lessico: [cartesiano, portale, gantry, cartesian, asse lineare, linear axis]
+      indizi_ulteriori: ["spesso non esiste un 'reach' unico dichiarato"]
+    confondibile_con: []
+
+    # ---- LIVELLO 2 -------------------------------------------------------
+    dh_parametrico:
+      note_frame: "z0 lungo il primo asse di traslazione; scelta canonica, gli offset costanti su theta sono convenzionali"
+      tabella:
+        - {i: 1, a: 0, alpha: -90, d: "d1*", theta: 0}
+        - {i: 2, a: 0, alpha: -90, d: "d2*", theta: -90}
+        - {i: 3, a: 0, alpha: 0,   d: "d3*", theta: 0}
+      parametri_liberi: []
+      variabili_giunto: ["d1*", "d2*", "d3*"]
+      numeri_da_cercare_nel_documento:
+        - {simbolo: "corsa_1", significato: "escursione del primo asse", dove: "tabella, in mm"}
+        - {simbolo: "corsa_2", significato: "escursione del secondo asse", dove: "tabella, in mm"}
+        - {simbolo: "corsa_3", significato: "escursione del terzo asse", dove: "tabella, in mm"}
+      commento: >
+        E' l'unica famiglia in cui NON servono lunghezze di link: la geometria e' interamente
+        descritta dalle corse, che stanno in tabella. Non richiede alcun grounding visivo.
+
+    # ---- LIVELLO 3 -------------------------------------------------------
+    validazione:
+      forma_inviluppo:
+        tipo: parallelepipedo
+        formula: "volume = corsa_1 x corsa_2 x corsa_3"
+      cinematica_inversa:
+        forma_chiusa: true
+        motivo: "disaccoppiata e lineare: ogni coordinata cartesiana dipende da un solo giunto"
+        numero_soluzioni: 1
+      singolarita_caratteristiche: []
+      nota: "nessuna singolarita': e' la ragione per cui questa struttura si usa dove serve moto uniforme"
+
+  # -------------------------------------------------------------------------
+  - id: cilindrico
+    nome_it: "Cilindrico"
+    sigla: RPP
+    giunti: [R, P, P]
+
+    geometria_assi:
+      asse_1: {orientamento_base: verticale}
+      relazioni:
+        - [1, 2, parallelo]
+        - [2, 3, ortogonale_incidente]
+        - [1, 3, ortogonale_sghembo]
+      descrizione: "rotazione attorno a colonna verticale, sollevamento lungo la colonna, estensione radiale"
+    firma_documentale:
+      unita_campo_movimentazione: [deg, mm, mm]
+      forma_spazio_lavoro: "settore di corona cilindrica (cilindro cavo)"
+      quote_attese: "raggio min e max, corsa verticale, escursione angolare"
+      lessico: [cilindrico, cylindric, colonna, column]
+    confondibile_con:
+      - famiglia: sferico
+        distinzione: "il cilindrico ha DUE prismatici, lo sferico uno -> visibile dalle unita'"
+
+    dh_parametrico:
+      note_frame: "z0 lungo l'asse della colonna"
+      tabella:
+        - {i: 1, a: 0, alpha: 0,   d: "d1",  theta: "theta1*"}
+        - {i: 2, a: 0, alpha: -90, d: "d2*", theta: 0}
+        - {i: 3, a: 0, alpha: 0,   d: "d3*", theta: 0}
+      parametri_liberi:
+        - {simbolo: d1, significato: "altezza della base / offset verticale di riferimento", unita: mm}
+      variabili_giunto: ["theta1*", "d2*", "d3*"]
+      numeri_da_cercare_nel_documento:
+        - {simbolo: d1, dove: "disegno: altezza del riferimento sopra il piano di appoggio"}
+        - {simbolo: "raggio_min", significato: "estensione radiale minima", dove: "tabella o disegno"}
+        - {simbolo: "raggio_max", significato: "estensione radiale massima", dove: "tabella o disegno"}
+        - {simbolo: "corsa_verticale", dove: "tabella, in mm"}
+
+    validazione:
+      forma_inviluppo:
+        tipo: corona_cilindrica
+        formula: "raggio interno = raggio_min, raggio esterno = raggio_max, altezza = corsa_verticale"
+      cinematica_inversa:
+        forma_chiusa: true
+        motivo: "e' la trasformazione da coordinate cilindriche a cartesiane, invertibile in forma chiusa"
+        numero_soluzioni: 1
+      singolarita_caratteristiche:
+        - {id: asse_colonna, condizione: "estensione radiale = 0", effetto: "la rotazione di base non produce moto del punto terminale"}
+
+  # -------------------------------------------------------------------------
+  - id: sferico
+    nome_it: "Polare / sferico"
+    sigla: RRP
+    giunti: [R, R, P]
+
+    geometria_assi:
+      asse_1: {orientamento_base: verticale}
+      relazioni:
+        - [1, 2, ortogonale_incidente]
+        - [2, 3, ortogonale_incidente]
+      descrizione: "rotazione attorno ad asse verticale, brandeggio attorno ad asse orizzontale incidente, estensione telescopica"
+    firma_documentale:
+      unita_campo_movimentazione: [deg, deg, mm]
+      forma_spazio_lavoro: "guscio sferico (porzione di corona sferica)"
+      quote_attese: "raggio min e max, due escursioni angolari"
+      lessico: [polare, sferico, polar, spherical, telescopico, telescopic]
+      esempio_canonico: "manipolatore Stanford (2R-1P-3R), tabella svolta in 09_DirectKinematics.pdf"
+    confondibile_con:
+      - famiglia: scara
+        distinzione: >
+          STESSA SIGLA RRP, discriminazione puramente geometrica.
+          Sferico: asse 2 ORTOGONALE E INCIDENTE all'asse 1, prismatico RADIALE (orizzontale).
+          SCARA:   asse 2 PARALLELO all'asse 1, prismatico VERTICALE.
+          Segnale documentale piu' economico: nello SCARA la corsa e' 'sollevamento/lift';
+          nello sferico e' 'estensione radiale / sbraccio'.
+
+    dh_parametrico:
+      note_frame: "z0 verticale lungo l'asse 1; canonica del manipolatore Stanford (parte di posizionamento)"
+      tabella:
+        - {i: 1, a: 0, alpha: -90, d: 0,    theta: "theta1*"}
+        - {i: 2, a: 0, alpha: +90, d: "d2", theta: "theta2*"}
+        - {i: 3, a: 0, alpha: 0,   d: "d3*", theta: 0}
+      parametri_liberi:
+        - {simbolo: d2, significato: "offset di spalla: distanza fra l'asse 1 e l'asse del braccio telescopico", unita: mm}
+      variabili_giunto: ["theta1*", "theta2*", "d3*"]
+      numeri_da_cercare_nel_documento:
+        - {simbolo: d2, dove: "disegno: scostamento laterale del braccio rispetto alla colonna"}
+        - {simbolo: "d3_min", significato: "estensione telescopica minima", dove: "tabella o disegno"}
+        - {simbolo: "d3_max", significato: "estensione telescopica massima = reach", dove: "tabella"}
+        - {simbolo: "altezza_asse_2", dove: "disegno: altezza dell'asse di brandeggio sopra la base"}
+
+    validazione:
+      forma_inviluppo:
+        tipo: corona_sferica
+        formula: "raggio interno = d3_min, raggio esterno = d3_max, troncata dai limiti angolari di theta2"
+      cinematica_inversa:
+        forma_chiusa: true
+        motivo: "trasformazione da coordinate sferiche a cartesiane"
+        numero_soluzioni: 2
+        nota: "due soluzioni: theta1 e theta1+180 con theta2 riflesso"
+      singolarita_caratteristiche:
+        - {id: asse_verticale, condizione: "il punto terminale giace sull'asse 1", effetto: "theta1 indeterminato"}
+
+  # -------------------------------------------------------------------------
+  - id: scara
+    nome_it: "SCARA"
+    sigla: RRP
+    giunti: [R, R, P]
+
+    geometria_assi:
+      asse_1: {orientamento_base: verticale}
+      relazioni:
+        - [1, 2, parallelo]
+        - [2, 3, parallelo]
+        - [1, 3, parallelo]
+      descrizione: "due rotazioni ad asse verticale nel piano orizzontale + sollevamento verticale. Tutti e tre gli assi paralleli."
+    firma_documentale:
+      unita_campo_movimentazione: [deg, deg, mm]
+      forma_spazio_lavoro: "corona circolare estrusa verticalmente"
+      quote_attese:
+        - "reach = a1 + a2 (somma delle due lunghezze di braccio)"
+        - "raggio interno dichiarato esplicitamente (inside radius) — firma tipica"
+        - "corsa verticale (lift/stroke) in mm"
+      lessico: [scara, turboscara, braccio orizzontale, assembly robot]
+      indizi_ulteriori:
+        - "un quarto asse R parallelo ai primi tre (rotazione utensile)"
+        - "tipicamente 4 assi in totale"
+    confondibile_con:
+      - famiglia: sferico
+        distinzione: "vedi sferico -> confondibile_con"
+
+    dh_parametrico:
+      note_frame: "canonica Siciliano; alpha2 = 180 e' la scelta di frame che orienta z3 verso il basso"
+      tabella:
+        - {i: 1, a: "a1", alpha: 0,   d: "d1",  theta: "theta1*"}
+        - {i: 2, a: "a2", alpha: 180, d: 0,     theta: "theta2*"}
+        - {i: 3, a: 0,    alpha: 0,   d: "d3*", theta: 0}
+        - {i: 4, a: 0,    alpha: 0,   d: "d4",  theta: "theta4*", nota: "rotazione utensile: e' il 'polso' degenere dello SCARA"}
+      parametri_liberi:
+        - {simbolo: a1, significato: "lunghezza del primo braccio", unita: mm}
+        - {simbolo: a2, significato: "lunghezza del secondo braccio", unita: mm}
+        - {simbolo: d1, significato: "altezza del piano del braccio sopra la base", unita: mm}
+        - {simbolo: d4, significato: "offset flangia", unita: mm}
+      variabili_giunto: ["theta1*", "theta2*", "d3*", "theta4*"]
+      numeri_da_cercare_nel_documento:
+        - {simbolo: a1, dove: "disegno: raggio quotato del primo braccio (es. R330)"}
+        - {simbolo: a2, dove: "disegno: raggio quotato del secondo braccio (es. R270)"}
+        - {simbolo: d1, dove: "disegno: altezza del braccio"}
+        - {simbolo: "corsa_z", dove: "tabella: lift / corsa asse 3, in mm"}
+      vincolo_di_chiusura: "a1 + a2 = reach dichiarato in tabella"
+      verificato_su: "Bosch turboscara SR6: 330 + 270 = 600 mm = reach (log 8.3)"
+
+    validazione:
+      forma_inviluppo:
+        tipo: corona_circolare_estrusa
+        formula: "raggio esterno = a1 + a2 ; raggio interno = |a1 - a2| (o maggiore, se theta2 e' limitato) ; altezza = corsa_z"
+        nota: >
+          il raggio interno e' un test forte perche' i costruttori lo dichiarano esplicitamente:
+          Bosch SR6 dichiara inside radius 167 mm con a1=330, a2=270 -> |330-270| = 60, quindi il
+          raggio interno reale e' determinato dal LIMITE di theta2 (+/-150 deg), non dalla geometria.
+          Da usare come verifica congiunta di geometria E limiti.
+      cinematica_inversa:
+        forma_chiusa: true
+        motivo: "tre assi paralleli (condizione di Pieper, secondo caso); si risolve come 2R planare + z disaccoppiata"
+        numero_soluzioni: 2
+        nota: "gomito a destra / gomito a sinistra"
+      singolarita_caratteristiche:
+        - {id: braccio_esteso, condizione: "theta2 = 0", effetto: "braccio completamente steso: si perde la direzione radiale"}
+        - {id: braccio_ripiegato, condizione: "theta2 = 180", effetto: "braccio completamente ripiegato"}
+
+  # -------------------------------------------------------------------------
+  - id: antropomorfo
+    nome_it: "Articolato / antropomorfo"
+    sigla: RRR
+    giunti: [R, R, R]
+
+    geometria_assi:
+      asse_1: {orientamento_base: verticale}
+      relazioni:
+        - [1, 2, ortogonale_incidente_o_sghembo]
+        - [2, 3, parallelo]     # <- LA firma della famiglia
+        - [1, 3, ortogonale_sghembo]
+      descrizione: "primo asse verticale, secondo e terzo paralleli fra loro e ortogonali al primo"
+    firma_documentale:
+      unita_campo_movimentazione: [deg, deg, deg]
+      forma_spazio_lavoro: "guscio sferico con rientranza; nei disegni laterali profilo a rene/mela"
+      quote_attese:
+        - "raggio d'azione massimo (reach)"
+        - "altezza dell'asse 2 sopra il piano di montaggio"
+        - "lunghezza di braccio e avambraccio"
+      lessico: [articolato, antropomorfo, articulated, braccio articolato]
+      indizi_ulteriori:
+        - "tipicamente 6 assi in totale (3 posizionamento + 3 polso)"
+        - >
+          NOMI DEGLI ASSI PER FUNZIONE: due costruttori indipendenti mettono nel canale testuale
+          un indizio della famiglia e della presenza di un polso sferico.
+          ABB:     Rotation, Arm, Arm, Wrist, Bend, Turn
+          Yaskawa: S, L, U, R, B, T = Swivel, Lower arm, Upper arm, Roll, Bend, Twist
+          Schema comune: [rotazione base][braccio][braccio][rotazione][flessione][rotazione]
+    confondibile_con: []
+
+    varianti_strutturali:
+      - id: spalla_incidente
+        condizione: "a1 = 0"
+        descrizione: "l'asse 2 interseca l'asse 1: nessun offset di spalla"
+        conseguenza: "il reach E' la somma delle lunghezze -> la chiusura numerica torna"
+        tipico_di: "cobot a struttura in linea (KUKA LBR iisy)"
+      - id: spalla_sghemba
+        condizione: "a1 != 0"
+        descrizione: "l'asse 2 e' spostato lateralmente rispetto all'asse 1"
+        conseguenza: "il reach NON e' la somma: composizione pitagorica -> la chiusura non si produce"
+        tipico_di: "industriali (KUKA KR AGILUS, ABB IRB, FANUC)"
+        nota_diagnostica: "se la chiusura non torna, sospettare una spalla sghemba PRIMA di sospettare un errore di lettura"
+
+    dh_parametrico:
+      note_frame: "canonica Siciliano (braccio antropomorfo), con d1 aggiunto per l'altezza di base"
+      tabella:
+        - {i: 1, a: "a1", alpha: 90, d: "d1", theta: "theta1*"}
+        - {i: 2, a: "a2", alpha: 0,  d: 0,    theta: "theta2*"}
+        - {i: 3, a: "a3", alpha: 0,  d: 0,    theta: "theta3*"}
+      tabella_con_polso_sferico:
+        nota: >
+          la composizione NON e' una semplice concatenazione: per agganciare il polso,
+          alpha3 passa da 0 a 90 per ruotare il frame verso la catena del polso.
+          E' il classico 6R industriale (tipo PUMA).
+        righe:
+          - {i: 1, a: "a1", alpha: 90,  d: "d1", theta: "theta1*"}
+          - {i: 2, a: "a2", alpha: 0,   d: 0,    theta: "theta2*"}
+          - {i: 3, a: "a3", alpha: 90,  d: 0,    theta: "theta3*"}
+          - {i: 4, a: 0,    alpha: -90, d: "d4", theta: "theta4*"}
+          - {i: 5, a: 0,    alpha: 90,  d: 0,    theta: "theta5*"}
+          - {i: 6, a: 0,    alpha: 0,   d: "d6", theta: "theta6*"}
+      parametri_liberi:
+        - {simbolo: d1, significato: "altezza dell'asse 2 sopra il piano di montaggio", unita: mm}
+        - {simbolo: a1, significato: "offset di spalla (0 se spalla incidente)", unita: mm}
+        - {simbolo: a2, significato: "lunghezza del braccio (spalla -> gomito)", unita: mm}
+        - {simbolo: a3, significato: "lunghezza dell'avambraccio (gomito -> centro polso)", unita: mm}
+        - {simbolo: d4, significato: "offset di polso", unita: mm, opzionale: true}
+        - {simbolo: d6, significato: "distanza centro polso -> flangia", unita: mm}
+      variabili_giunto: ["theta1*", "theta2*", "theta3*", "theta4*", "theta5*", "theta6*"]
+      numeri_da_cercare_nel_documento:
+        - {simbolo: d1, dove: "disegno, vista laterale: altezza dell'asse 2 sopra il piano di appoggio"}
+        - {simbolo: a1, dove: "disegno: scostamento orizzontale dell'asse 2 dall'asse 1 (spesso NON quotato)"}
+        - {simbolo: a2, dove: "disegno: distanza asse 2 -> asse 3"}
+        - {simbolo: a3, dove: "disegno: distanza asse 3 -> centro polso"}
+        - {simbolo: d6, dove: "disegno: centro polso -> flangia"}
+      vincolo_di_chiusura:
+        spalla_incidente: "a2 + a3 + d6 = reach dichiarato"
+        spalla_sghemba:   "sqrt((a2+a3+d6)^2 + a1^2) circa reach, ma dipende dai limiti -> usare il test dell'inviluppo"
+      verificato_su:
+        - "LBR iisy 8 R930 (spalla incidente): 385 + 367 + 178 = 930 mm = reach (log 7.4)"
+        - "LBR iiwa 14 R820 (spalla incidente): 420 + 400 = 820 mm = reach (log 7.4)"
+        - "ABB IRB 6400PE (spalla sghemba): identificati d1=900,0 / a1=187,9 / a2=950,0 / a3=1171,8, RMS 0,17 mm (log 8.5)"
+        - >
+          Yaskawa GP8 (spalla sghemba): quote a1=40, a2=345, a3=40, d4=340 presenti nel livello di testo.
+          somma semplice = 765,0 (errore +38 mm) — formula sghemba = 727,3 contro reach dichiarato 727 (errore +0,3 mm).
+          Controprova GP7: stessa tabella dei limiti, solo a2=545 -> 927,3 contro reach 927.
+          Verifica su un costruttore NON usato per formulare la regola (log 11.4).
+
+    validazione:
+      forma_inviluppo:
+        tipo: guscio_sferico_con_rientranza
+        formula: >
+          raggio esterno = a2 + a3 (dal centro dell'asse 2), traslato di a1 e d1;
+          il profilo effettivo e' determinato dai limiti di theta2 e theta3, non dalla sola geometria.
+        quote_da_confrontare: [sbraccio_orizzontale_max, altezza_max, punto_piu_basso]
+        stato: "VERIFICATO su ABB IRB 6400PE (log 8.5, e ri-verificato end-to-end dalla tabella qui sopra)"
+      verifica_end_to_end:
+        # eseguita il 2026-09-08: la tabella DH parametrica di QUESTA voce di catalogo,
+        # fittata sui dati ufficiali ABB, riproduce sia le pose sia le quote di inviluppo.
+        robot: "ABB IRB 6400PE"
+        dati_di_ingresso: "7 pose (phi2, phi3 -> X, Z del centro polso), Product Specification p.13"
+        convenzione_variabili_giunto: assoluta_con_accoppiamento
+        parametri_identificati: {a1: 187.9, d1: 900.0, a2: 950.0, a3: 1171.8, unita: mm}
+        residuo_rms_mm: 0.172
+        controlli_incrociati:
+          - {grandezza: "d1 identificato", calcolato: 900.0, quotato_nel_disegno: 900, nota: "quota mai usata nel fit"}
+          - {grandezza: "posa 0 (phi2=phi3=0)", calcolato: "(1337.8, 2074.8)", documento: "(1338, 2075)"}
+          - {grandezza: "sbraccio orizzontale max", calcolato: 2252.4, quotato: 2253, errore_mm: -0.65}
+          - {grandezza: "altezza max", calcolato: 2588.4, quotato: 2589, errore_mm: -0.61}
+          - {grandezza: "punto piu' basso", calcolato: 53.0, quotato: 53, errore_mm: -0.04}
+      cinematica_inversa:
+        forma_chiusa: true
+        condizione: "richiede polso sferico (assi 4,5,6 incidenti in un punto) -> condizione di Pieper"
+        motivo: "il polso sferico disaccoppia posizione (primi 3 giunti) e orientamento (ultimi 3)"
+        numero_soluzioni: 8
+        nota: "spalla avanti/indietro x gomito alto/basso x polso dritto/rovesciato = 2x2x2"
+        avvertenza: >
+          se il modello identificato NON ha polso sferico, la forma chiusa non esiste.
+          Poiche' i costruttori progettano i robot industriali per soddisfare Pieper,
+          un modello che non lo soddisfa e' quasi certamente un modello ricostruito male.
+      firma_di_simmetria_dei_limiti:
+        # Predicato aggiunto il 2026-09-08 (Decisione 21). Invariante FISICO, non statistico:
+        # base e rotazioni di polso ruotano libere -> limiti simmetrici;
+        # spalla e braccio interferiscono col corpo del robot -> limiti necessariamente asimmetrici.
+        attesi_simmetrici:  [1, 4, 6]   # base, roll polso, rotazione flangia
+        attesi_asimmetrici: [2, 3]      # spalla, braccio
+        asse_5: "di norma simmetrico, ma con eccezioni"
+        uso: "un'estrazione che produce l'asse 2 o 3 con limiti simmetrici e' quasi certamente errata"
+        costo: "nullo, nessun dato esterno richiesto"
+        verificato_su:
+          corpus: "28 robot MOTOMAN GP (Yaskawa), da 4 a 600 kg"
+          esito: "S 28/28 simm.  R 28/28 simm.  T 28/28 simm.  L 27/28 asimm.  U 28/28 asimm.  B 25/28 simm."
+          eccezione_isolata: "GP215-200T (L = +/-50): modello a montaggio speciale — il predicato ha isolato da solo l'unico caso anomalo, e l'anomalia era reale"
+      singolarita_caratteristiche:
+        - {id: spalla, condizione: "il centro polso giace sull'asse 1", effetto: "theta1 indeterminato"}
+        - {id: gomito, condizione: "theta3 = 0 oppure 180 (braccio steso o ripiegato)", effetto: "si perde la direzione radiale"}
+        - {id: polso,  condizione: "theta5 = 0 (assi 4 e 6 allineati)", effetto: "theta4 e theta6 producono la stessa rotazione"}
+
+# ===========================================================================
+# IL POLSO — dimensione ortogonale alla famiglia
+# ===========================================================================
+polsi:
+  - id: sferico
+    nome_it: "Polso sferico"
+    descrizione: "tre assi R incidenti in un unico punto (centro polso)"
+    geometria_assi:
+      relazioni: [[4, 5, ortogonale_incidente], [5, 6, ortogonale_incidente], [4, 6, incidente]]
+      punto_comune: true
+    dh_parametrico:
+      tabella:
+        - {i: 4, a: 0, alpha: -90, d: "d4", theta: "theta4*"}
+        - {i: 5, a: 0, alpha: 90,  d: 0,    theta: "theta5*"}
+        - {i: 6, a: 0, alpha: 0,   d: "d6", theta: "theta6*"}
+      parametri_liberi:
+        - {simbolo: d4, significato: "offset dal gomito al centro polso (puo' essere 0)"}
+        - {simbolo: d6, significato: "distanza centro polso -> flangia utensile"}
+    validazione:
+      soddisfa_pieper: true
+      rilevanza: "e' cio' che rende risolvibile in forma chiusa la cinematica inversa"
+    firma_documentale: "6 assi totali; nel disegno il polso e' compatto e i tre assi convergono"
+    ipotesi_di_default: true
+    nota: "assunto per default sui 6 assi industriali -> da confermare (domanda C alla prof)"
+
+  - id: con_offset
+    nome_it: "Polso con offset (non sferico)"
+    descrizione: "tre assi R non concorrenti in un punto"
+    validazione:
+      soddisfa_pieper: false
+      rilevanza: "la cinematica inversa richiede soluzione numerica: nessuna forma chiusa standard"
+    firma_documentale: "polso allungato; tipico di robot per saldatura/verniciatura con passaggio cavi interno"
+
+  - id: due_assi
+    nome_it: "Polso a due assi"
+    descrizione: "2 gdl di orientamento"
+    firma_documentale: "5 assi totali"
+    nota: "il robot non puo' raggiungere un orientamento arbitrario"
+
+  - id: rotazione_utensile
+    nome_it: "Sola rotazione utensile"
+    descrizione: "un unico asse R parallelo all'asse di sollevamento"
+    firma_documentale: "tipico dello SCARA: 4 assi totali, il quarto in gradi e parallelo ai primi"
+    presente_nel_corpus: true
+
+  - id: assente
+    nome_it: "Nessun polso"
+    firma_documentale: "3 assi totali"
+
+# ===========================================================================
+# FUORI PERIMETRO
+# ===========================================================================
+fuori_perimetro:
+  - id: parallela_delta
+    nome_it: "Cinematica parallela (delta)"
+    motivo: "esclusa dalla prof per questa fase (Decisione 13)"
+    firma_documentale:
+      indizio_forte: "tre assi con campo di movimentazione IDENTICO (KR 3 D1200: A1=A2=A3=-109/42 deg)"
+      nota: "incompatibile con un antropomorfo, dove spalla e gomito hanno escursioni diverse"
+    perche_dh_non_si_applica: "catene chiuse: i giunti non sono indipendenti, la FK richiede equazioni di vincolo"
+    esempi_nel_corpus: ["KUKA KR 3 D1200", "KUKA KR 3 D1200 HM"]
+
+  - id: antropomorfo_ridondante_7r
+    nome_it: "Antropomorfo ridondante a 7 assi"
+    motivo: "in attesa di risposta della prof (domanda E)"
+    descrizione_provvisoria: "spalla sferica + gomito + polso sferico; non si scompone in 3+3"
+    dh_noto: "per l'LBR iiwa/LWR la tabella e' pubblicata (Gaz-Flacco-De Luca, ICRA 2014): tutti a=0, alpha alternati +/-90, solo due d non nulli"
+    problema_aperto: >
+      il predicato 'esiste la cinematica inversa in forma chiusa' non si applica:
+      un braccio ridondante ha infinite soluzioni (auto-moto del gomito a pinza ferma).
+      Serve un predicato sostitutivo per la validazione strutturale.
+    esempi_nel_corpus: ["KUKA LBR iiwa 7 R800 CR", "LBR iiwa 14 R820", "LBR iiwa 14 R820 CR"]
+
+# ===========================================================================
+# COPERTURA E LIMITI
+# ===========================================================================
+copertura_corpus:
+  osservate_su_documenti_reali: [antropomorfo, scara]
+  non_osservate: [cartesiano, cilindrico, sferico]
+  avvertenza: >
+    per le tre famiglie non osservate la firma documentale e' DERIVATA dalla classificazione e dai
+    testi, non verificata su schede reali. Le tabelle DH parametriche sono invece consolidate
+    (materiale da manuale) e non dipendono dal corpus.

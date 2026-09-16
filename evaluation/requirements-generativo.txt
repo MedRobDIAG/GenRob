@@ -1,0 +1,15 @@
+# Livello GENERATIVO: riesecuzione del modello visione-linguaggio.
+# Richiede GPU (o molta pazienza su CPU) e circa 17 GB di scaricamento al primo avvio.
+# Installare DOPO requirements-analisi.txt.
+#
+# torch va installato per la propria piattaforma. Esempi:
+#   NVIDIA, CUDA 12.8:  pip install torch --index-url https://download.pytorch.org/whl/cu128
+#   Apple Silicon:      pip install torch            (backend MPS, nessuna quantizzazione)
+#   CPU:                pip install torch
+torch>=2.4
+transformers>=4.51
+accelerate>=0.30
+pillow>=10.0
+
+# quantizzazione a 4/8 bit: solo NVIDIA/CUDA (non installabile su Apple Silicon)
+# bitsandbytes>=0.43
