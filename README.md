@@ -46,6 +46,9 @@ coppelia/
 notebooks/
   demiurge_demo.ipynb        prototipo originale (Colab), conservato per riferimento
 
+evaluation/                banco di misura del Modulo A su un catalogo di robot pubblici,
+                            indipendente dalla pipeline di generazione — si veda evaluation/README.md
+
 outputs/                  file generati dall'esecuzione della pipeline (esclusi dal controllo versione)
 ```
 
