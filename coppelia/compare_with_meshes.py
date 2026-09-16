@@ -27,20 +27,21 @@ MESH_DIR = Path("/tmp/kuka_meshes")
 # valori trascritti da module_a/data/kuka_lwr.urdf.xacro (xacro pubblico kuka-lwr).
 #
 # Nota: i 400/390mm della Tabella DH del report si riferiscono al modello
-# DH semplificato a 2 soli offset non nulli (urdf_builder.py), dove ciascun
-# valore raggruppa DUE giunti reali consecutivi (es. a3_joint + a4_joint).
-# Iniettare quel valore in un singolo giunto di QUESTA catena (che ha invece
-# 7 offset distinti) raddoppierebbe erroneamente un segmento. Qui si usa
-# quindi la catena reale non modificata per entrambe le varianti: lo scarto
-# di 10mm tra estratto e riferimento e' comunque troppo piccolo per essere
-# visibile a occhio, che e' esattamente il punto del confronto visivo.
+# DH semplificato a 2 soli offset non nulli (urdf_builder.py). Il secondo
+# valore raggruppa, nella convenzione di build_reference.py, i due giunti
+# reali a4_joint (indice 5 qui sotto, 0.20m) e a5_joint (indice 6, 0.19m):
+# 0.20+0.19=0.39m e' il riferimento, mentre l'estratto legge 0.40m per lo
+# stesso segmento (400 anziche' 390mm, l'unico scostamento della Tabella
+# dh-confronto del report). Per riprodurlo su questa catena reale, i 10mm
+# di differenza vanno sul giunto a5 (indice 6): 0.20m nell'estratto contro
+# 0.19m reali nel riferimento.
 CHAIN_TEMPLATE = [
     (1, 0.11,   (0, 0, 1),  (0, 0, -0.008), (0, 0, 3.14159)),
     (2, 0.2005, (0, -1, 0), (0, 0, 0.0),    (0, 0, 3.14159)),
     (3, 0.20,   (0, 0, 1),  (0, 0, -0.008), (0, 0, 3.14159)),
     (4, 0.20,   (0, 1, 0),  (0, 0, 0.0),    (0, 0, 3.14159)),
     (5, 0.20,   (0, 0, 1),  (0, 0, -0.008), (0, 0, 3.14159)),
-    (6, 0.19,   (0, -1, 0), (0, 0, 0.0),    (0, 0, 3.14159)),
+    (6, None,   (0, -1, 0), (0, 0, 0.0),    (0, 0, 3.14159)),  # a5: 0.20 estratto / 0.19 riferimento
     (7, 0.078,  (0, 0, 1),  (0, 0, 0.0),    (0, 0, 3.14159)),
 ]
 
@@ -73,9 +74,11 @@ LINK_JOINT = """
   </joint>"""
 
 
-def build_urdf(name):
+def build_urdf(name, a5_offset_m):
     parts = []
     for i, oz, axis, vorigin, vrpy in CHAIN_TEMPLATE:
+        if i == 6:
+            oz = a5_offset_m
         parent = "base_link" if i == 1 else f"link_{i - 1}"
         parts.append(LINK_JOINT.format(
             i=i, parent=parent, mesh_dir=MESH_DIR,
@@ -99,8 +102,8 @@ def main():
 
     extracted_path = Path("/tmp/extracted_mesh.urdf")
     reference_path = Path("/tmp/reference_mesh.urdf")
-    extracted_path.write_text(build_urdf("extracted_mesh_robot"))
-    reference_path.write_text(build_urdf("reference_mesh_robot"))
+    extracted_path.write_text(build_urdf("extracted_mesh_robot", a5_offset_m=0.20))
+    reference_path.write_text(build_urdf("reference_mesh_robot", a5_offset_m=0.19))
 
     _, handles_ext = import_fn(str(extracted_path), IMPORT_OPTIONS)
     sim.setObjectPosition(handles_ext[0], -1, [-0.5, 0, 0])

@@ -41,6 +41,7 @@ coppelia/
   compare_with_meshes.py     variante con le mesh CAD reali del KUKA LWR 4+, a scopo illustrativo
   set_demo_pose.py           applica una posa piegata ai robot importati, per il confronto visivo
   measure_toolpose.py        validazione quantitativa di posizione e orientamento del tool tip
+  measure_toolpose_meshes.py come sopra, con mesh reali e tool tip visibile su un'unica posa
 
 notebooks/
   demiurge_demo.ipynb        prototipo originale (Colab), conservato per riferimento
@@ -192,6 +193,17 @@ al posto delle primitive geometriche, a scopo illustrativo:
 
 ```bash
 python3 compare_with_meshes.py
+```
+
+Una seconda variante, sempre con mesh reali, aggiunge inoltre un
+marcatore sferico colorato in corrispondenza del tool tip di ciascun
+braccio (nello stesso punto misurato da `measure_toolpose.py`) e ne
+stampa a video posizione ed errore per un'unica posa dimostrativa,
+utile per uno screenshot che mostri contestualmente la scena e la
+lettura numerica:
+
+```bash
+python3 measure_toolpose_meshes.py
 ```
 
 **Validazione quantitativa in simulazione** (secondo l'indicazione
