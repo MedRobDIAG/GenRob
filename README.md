@@ -46,6 +46,9 @@ notebooks/
   demiurge_demo.ipynb        prototipo originale (Colab), conservato per riferimento
 
 outputs/                  file generati dall'esecuzione della pipeline (esclusi dal controllo versione)
+
+evaluation/               banco di misura del Modulo A: ground truth, prompt, runner,
+                          scorer e risultati della campagna sperimentale (vedi Parte II)
 ```
 
 ## Requisiti e installazione
